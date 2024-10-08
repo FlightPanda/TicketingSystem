@@ -1,0 +1,1300 @@
+/*ESTILOS BASE E INDEX.HTML*/
+
+* {
+    margin: 0px;
+    padding: 0px;
+    position: relative;
+}
+
+body {background-color: rgb(124, 122, 122);
+      background-image: url("../img/means/fondo14.jpg");
+      background-repeat:repeat-y;
+      background-size:cover;
+}
+
+.bas {
+    width: 92%;
+    background-color: rgb(179, 177, 177);
+    margin-top: 3%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-bottom: 3px;
+    padding-top: 3px;
+    border-radius: 10px;
+}
+
+.Slogan {
+    height: 100px;
+    background-color: rgb(20, 20, 20);
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+
+.NomSitio {
+    height: 100px;
+    background-image: url("../img/means/rotulo.gif");
+    background-repeat: no-repeat;
+}
+.base {
+    width: 92%;
+    background-color: rgb(179, 177, 177, 0.5);
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 3px;
+    padding-right: 3px;
+    padding-bottom: 3px;
+    padding-top: 1px;
+    border-radius: 10px;
+    
+}
+.cabecera, .pie {
+    height: 100px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(20, 20, 20);
+    border: rgb(20, 20, 20) 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.cabecera {
+    border-top-right-radius: 10px;
+    border-top-left-radius: 10px;
+}
+
+.pie {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+.pie > div {
+    width: 80px;
+    height: 60px;
+    background-color: rgb(124, 122, 122);
+    border-radius: 10%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    min-width: 80px;
+}
+
+.cabecera > div {
+    width: 80px;
+    height: 60px;
+    background-color: rgb(124, 122, 122);
+
+    border-radius: 10%;
+    margin-left: 2.5%;
+    margin-right: 2.5%;
+    min-width: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.subcabecera {
+    height: 60px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(20, 20, 20);
+    border: rgb(20, 20, 20) 1px solid;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.subcabecera > div {
+    background-color: rgb(0, 0, 0);
+    width: 45px;
+    height: 36px;
+    background-image: url("../img/means/cuentaatras.gif");
+    background-repeat: no-repeat;
+    background-size: 148px 202px;
+    background-position-x: -88px;
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.subcabecera > div.CuentaAtrasCatro {
+    background-position-y: -3px;
+}
+
+.subcabecera > div.CuentaAtrasTres {
+    background-position-y: -42px;
+}
+
+.subcabecera > div.CuentaAtrasDos {
+    background-position-y: -84px;
+}
+
+.subcabecera > div.CuentaAtrasUno {
+    background-position-y: -124px;
+}
+
+.subcabecera > p {
+    color: rgb(119, 118, 118);
+    font-size: 24px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif
+}
+
+.subcabecera > p.fechor {
+    text-align: center;
+}
+
+.subcabecera > p span.hora {
+    font-size: 34px;
+    color: white;
+    display: block;
+}
+
+.subcabecera > p span.fecha {
+    font-size: 14px;
+    display: block;
+}
+
+.cuerpo {
+    height: auto;
+    min-height: 360px;
+    margin-top: 5px;
+    margin-left: auto;
+    margin-right: auto;
+    background-color: rgb(20, 20, 20, 0.75);
+    text-align: center;
+    border: rgb(20, 20, 20) 1px solid;
+    overflow:hidden;
+    background-repeat:repeat-x;
+    background-size: 30%;
+    background-position-y: 145px;
+    
+}
+
+.cuerpo > div {
+    display: inline-flex;
+}
+
+.spot1 {
+    width: 50%;
+    min-width: 320px;
+    min-height: 350px;
+    margin-top: 5px;
+    background-color: rgb(222, 204, 87, 0.5);
+    border-radius: 10px;
+    background-image: url("../img/means/fondo1.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    border: rgb(50, 49, 49) 2px solid;
+}
+
+.spot2 {
+    width: 35%;
+    min-width: 320px;
+    min-height: 350px;
+    background-color: rgb(222, 204, 87, 0.5);
+    border-radius: 10px;
+    background-image: url("../img/means/fondo2.jpg");
+    background-repeat: no-repeat;
+    background-size:cover;
+    border: rgb(50, 49, 49) 2px solid;
+}
+
+.spot1 > div {
+    width: auto;
+    height: auto;
+    position: absolute;
+    top:170px;
+    left: 35%;
+}
+
+.spot1 > div > p {
+    font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
+    font-size: 34px;
+    color:rgb(36, 36, 36);
+}
+
+.spot1 > div > p > span {
+    color:white;
+    font-weight:normal;
+    background-color: rgb(234, 205, 44);
+    border-radius: 10px;
+    padding: 5px;
+    font-size: 28px;
+}
+
+.spot2 > a {
+    display:inline-block;
+    width: 222px;
+    height: 35px;
+    font-family: arial;
+    font-size: 24px;
+    color:white;
+    background-image: url("../img/means/botones-index.gif");
+    background-repeat: no-repeat;
+    background-size: 222px 150px;
+    background-position-y: -90px;
+    border: rgb(255, 255, 255, 0.5) 1px solid;
+    border-radius: 10px;
+    padding-top: 6px;
+    text-decoration: none;
+    position: absolute;
+    top:175px;
+    left: 35px;
+}
+
+.spot2 > a:hover {
+    background-position-y: -10px;
+    background-image:none;
+    background-color: rgb(203, 178, 39);
+}
+
+/*--------------------------- ESTILOS DE STEP1.HTML ---------------------------------------------*/
+
+.info {
+    position: absolute;
+    top:320px;
+    width: 200px;
+    height: 26px;
+    margin-left: 4px;
+    margin-right: 4px;
+    background-color: rgb(0, 0, 0);
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.info > p {
+   color: rgb(230, 247, 48);
+   font-family: arial;
+}
+
+.info > p > span {
+    font-weight: bold;
+    color: white;
+}
+
+a.pelicula {
+    width: 200px;
+    height: 300px;
+    background-color:rgb(20, 20, 20, 0);
+    margin-top: 20px;
+    margin-left: 4px;
+    margin-right: 4px;
+    margin-bottom: 3px;
+    display: inline-flex;
+    background-repeat: no-repeat;
+    background-size:cover;
+    z-index: 1;
+}
+
+a.pelicula:hover {
+    transition:all .5s ease-in-out;
+    -webkit-transform:scale(1.18);transform:scale(1.18);
+ 
+    filter: brightness(1.75);
+    z-index: 10;
+ 
+}
+
+/*--------------------------- ESTILOS DE STEP2.HTML ---------------------------------------------*/
+
+form.Fdatares {
+    width: auto;
+    height: auto;
+    background-image: url("../img/means/fondo15.gif");
+    background-color: rgb(41, 40, 40);
+    background-repeat: no-repeat;
+    background-size:cover;
+    max-width: 710px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+
+
+form.Fdatares div {
+    background-color: rgb(187, 187, 190, 0.1);
+    max-width: 710px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: 1px;
+    padding-bottom: 6px;
+    margin-top: 5px;
+}
+
+form.Fdatares div:first-child {
+    margin-top: 5px;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+form.Fdatares div:last-child {
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+    padding-top: 3px;
+}
+
+
+form.Fdatares div div {
+    display: inline-block;
+    background-color:rgb(187, 187, 190, 0);
+}
+
+form.Fdatares div:last-child div:last-child {
+    display: block;
+}
+
+form.Fdatares div div.VerticalAling {
+    display: block;
+}
+
+form.Fdatares > div.mini-billboard-selected {
+    background-image: url("../img/means/fondo21-3.gif");
+    background-repeat: no-repeat;
+    background-size: 100%;
+    background-position-x: center;
+    background-position-y: center;
+
+  }
+
+form.Fdatares > div.mini-billboard-selected > div {
+  background-image: url("../img/films/mini-billboard/film1.gif");
+  background-repeat: no-repeat;
+  background-size: contain;
+  width: 160px;
+  height: 188px;
+  border-radius: 0px;
+  padding: 0px;
+
+}
+
+form.Fdatares > div.mini-billboard-selected > div > div {
+    margin: 0px;
+    padding: 0px;
+    margin-top: 13px;
+    margin-left: auto;
+    margin-right: auto;
+    width: 105px;
+    height: 156px;
+    background-repeat: no-repeat;
+    background-size:contain;
+    background-position-x: 1px;
+    border-radius: 0px;
+  }
+
+  form.Fdatares > div.mini-billboard-selected > div > div:hover {
+  transition:all .5s ease-in-out;
+  -webkit-transform:scale(1.3);transform:scale(1.2);
+  filter: brightness(1.75);
+  z-index: 10;
+  cursor: pointer;
+}
+
+form.Fdatares div label {
+   display: inline-block;
+   text-align: right;
+   font-family: Arial, Helvetica, sans-serif;
+   color:white;
+   font-size: 16px;
+   padding-right: 5px;
+}
+
+form.Fdatares div.DatPer label {
+    width: 105px;
+ }
+
+ form.Fdatares div.DatRes label {
+    width: 110px;
+ }
+
+ form.Fdatares div.DatRes label.numentradas {
+    width: 220px;
+ }
+
+
+ form.Fdatares input[type="text"], form.Fdatares input[type="email"], 
+ form.Fdatares input[type="date"], form.Fdatares input[type="time"],
+ form.Fdatares input[type="number"]
+ {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color:rgb(34, 34, 34);
+    padding: 2px;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: white;
+ }
+
+
+
+form.Fdatares input[type="text"], form.Fdatares input[type="email"] {
+    width: 185px;
+    height: 30px;
+    margin-left: 2px;
+    margin-right: 10px;
+}
+
+form.Fdatares input[type="date"], form.Fdatares input[type="time"] {
+    width: 140px;
+    height: 30px;
+    margin-left: 25px;
+}
+
+form.Fdatares input[type="number"] {
+    width: 50px;
+    height: 30px;
+    margin-left: 5px;
+}
+
+form.Fdatares input:hover{
+    outline: none;
+    border-color:rgb(243, 251, 7);
+ }
+
+form.Fdatares input:focus{
+    outline: none;
+    border-color:rgb(251, 210, 7);
+ }
+
+ /*BOTONES SIG, ATRAS y HOME*/
+ form input[type="submit"], form a {
+    display:inline-block;
+    height: 44px;
+    width: 122px;
+    border-radius: 10px;
+    font-family: arial;
+    color:white;
+    font-size: 16px;
+    background-image: url("../img/means/botones.gif");
+    background-repeat: no-repeat;
+    border: rgb(255, 255, 255, 0.5) 1px solid;
+    border-radius: 10px;
+    background-size: 150px 150px;
+    background-position-y: -90px;
+    margin-left: 5px;
+   
+}
+
+form a.homebtn {
+    width: 50px;
+    background-image: url("../img/means/botones-home.gif");
+    background-position-y: -100px;
+    background-position-x: -51px;
+    border-radius: 5px;
+}
+
+form a {
+    height: 30px;
+    padding-top: 12px;
+    text-decoration: none;
+}
+
+form input[type="submit"]:hover, form a:hover, form a.homebtn:hover {
+    background-position-y: -11px;
+    cursor:pointer;
+    border-color:rgb(255, 255, 255, 0.5);
+}
+
+
+
+/*--------------------------- ESTILOS DE STEP3.HTML ---------------------------------------------*/
+
+.SalaButacas {
+    background-color: rgb(111, 112, 111, 0.3);
+    width: 400px;
+    height: 380px;
+    margin-bottom: 5px;
+    border-bottom-left-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.cuerpo > div.Pantalla {
+    background-color: rgb(111, 112, 111, 0.3);
+    width: 400px;
+    height: 50px;
+    margin-left: auto;
+    margin-right: auto;
+    display:block;
+    margin-top: 1%;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+}
+
+div.Pantalla > div {
+    margin-left: 8px;
+    width: 385px;
+    height: 10px;
+    margin-top: 10px;
+    position: absolute;
+    border-top: black 10px solid;
+    border-bottom: black 0px solid;
+    border-left: black 0px solid;
+    border-right: black 0px solid;
+    border-radius: 50%;
+}
+
+div.Pantalla > p {
+    position: absolute;
+    width: 400px;
+    text-align: center;
+    margin-top: 25px;
+    font-family: arial;
+    font-size: 16px;
+    color: rgb(255, 255, 255);
+}
+
+div.Pantalla > p > span {
+    color:rgb(193, 167, 62);
+    font-weight: bold;
+}
+
+
+
+.ButacasIzq {
+    background-color: rgb(111, 112, 111, 1);
+    width: 45%;
+    height: 100%;
+    margin-left: 5%;
+    border-top-left-radius: 5px;
+    border-bottom-left-radius: 5px;
+}
+
+
+
+.ButacasDer {
+    background-color: rgb(111, 112, 111, 1);
+    width: 45%;
+    height: 100%;
+    border-top-right-radius: 5px;
+    border-bottom-right-radius: 5px;
+}
+
+.ButacasIzq > .seccion {
+    background-color: rgb(220, 214, 219, 0);
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+
+.ButacasDer > .seccion {
+    background-color: rgb(220, 214, 219, 0);
+    display: flex;
+    justify-content: right;
+    align-items: center;
+}
+
+.ButacasIzq > .seccion:nth-child(7), .ButacasDer > .seccion:nth-child(7) {
+    margin-top: 15px;
+}
+
+
+.butaca {
+    background-color:rgb(112, 175, 87);
+    background-image: url("../img/means/butaca.gif");
+    background-repeat: no-repeat;
+    background-size: contain;
+    width: 25px;
+    height: 25px;
+    margin-top: 5px;
+    margin-left: 1px;
+    margin-right: 1px;
+    display: inline-block;
+    cursor: pointer;
+    border-radius: 3px;
+}
+
+form.ButacasFm {
+    width: 400px;
+    height: auto;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: rgb(111, 112, 111, 0.3);
+    display: flex;
+    justify-content: center;
+    padding-top: 9px;
+    padding-bottom: 9px;
+
+}
+
+
+/*--------------------------- ESTILOS DE STEP4.HTML ---------------------------------------------*/
+form.Fdatabuy {
+    width: auto;
+    height: auto;
+    background-image: url("../img/means/fondo15.gif");
+    background-color: rgb(41, 40, 40);
+    background-repeat: no-repeat;
+    background-size:cover;
+    max-width: 710px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 10px;
+}
+
+.CabResumenBuy {
+    background-color: rgb(22, 22, 22,0.6);
+    max-width: 710px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    border: rgb(70, 70, 71, 0) 1px solid;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    border-bottom: white 1px solid;
+}
+
+.CabResumenBuy p {
+    font-family: arial;
+    font-size: 18px;
+    color: rgb(240, 225, 113);;
+    padding: 5px;
+    font-weight: bold;
+    text-align: left;
+}
+
+
+.CuerResumen {
+    background-color: rgb(70, 70, 71,0.6);
+    max-width: 710px;
+    margin-left: auto;
+    margin-right: auto;
+    border: rgb(70, 70, 71, 0) 1px solid;
+    border-bottom: white 1px solid;
+    
+}
+
+
+.CuerResumen p {
+    padding: 2px;
+    color:white;
+    font-family: arial;
+    font-size: 16px;
+    text-align: left;
+    border: rgb(203, 201, 201) 0px solid;
+}
+
+.CuerResumen p span {
+    font-weight: bold;
+    display: inline-block;
+    width: 120px;
+}
+
+.CabResumenFac, .CabResumenTar {
+    background-color: rgb(22, 22, 22, 0.6);
+    max-width: 710px;
+    margin-left: auto;
+    margin-right: auto;
+    border: rgb(70, 70, 71) 0px solid;
+    border-bottom: white 1px solid;
+}
+
+.CabResumenTar {
+    background-image: url("../img/means/icono_tarjetas.gif");
+    background-repeat: no-repeat;
+    background-size: 74px 23px;
+    background-position-x: right;
+    background-position-y: center;
+    
+}
+
+.CabResumenFac p, .CabResumenTar p {
+    font-family: arial;
+    font-size: 18px;
+    color: rgb(240, 225, 113);
+    padding: 5px;
+    font-weight: bold;
+    text-align: left;
+}
+
+.CabResumenFac p span, .CabResumenTar p span{
+    color: white;
+    font-size: 24px;
+}
+
+/*Formulario*/
+.DatTarjeta {
+    background-color: rgb(187, 187, 190, 0.1);
+    border: rgb(187, 187, 190, 0) 1px solid;
+}
+
+.DatTarjeta:last-child {
+    margin-top: 5px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
+
+.DatTarjeta > div {
+    margin-top: 5px;
+   
+}
+form.Fdatabuy div label {
+    display: inline-block;
+    width: 78px;
+    text-align: right;
+    font-family: Arial, Helvetica, sans-serif;
+    color:white;
+    font-size: 16px;
+    padding-right: 5px;
+
+ }
+
+ form.Fdatabuy > div > div > label:nth-child(1) {
+    width: 75px;
+ }
+
+ form.Fdatabuy input[type="text"], form.Fdatabuy input[type="number"], form.Fdatabuy select {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    color:rgb(34, 34, 34);
+    padding: 2px;
+    border-radius: 5px;
+    border-width: 2px;
+    border-color: white;
+    margin-top: 4px;
+ }
+
+ form.Fdatabuy input[type="text"] {
+    width: 188px;
+    height: 30px;
+    margin-left: 2px;
+ 
+}
+
+ form.Fdatabuy input[type="number"] {
+    width: 188px;
+    height: 30px;
+    margin-left: 2px;
+}
+
+form.Fdatabuy select {
+    width: 50px;
+    height: 30px;
+    margin-left: 1px;
+}
+
+form.Fdatabuy > div > div:last-child > input:last-child {
+    width: 50px;
+}
+
+
+form.Fdatabuy input[type="text"]:hover, form.Fdatabuy input[type="number"]:hover, form.Fdatabuy select:hover{
+    outline: none;
+    border-color:rgb(243, 251, 7);
+ }
+
+ form.Fdatabuy input[type="text"]:focus, form.Fdatabuy input[type="number"]:focus, form.Fdatabuy select:focus{
+    outline: none;
+    border-color:rgb(251, 210, 7);
+ }
+
+ /*--------------------------- ESTILOS DE STEP4.HTML ---------------------------------------------*/
+ .cuerpo > div.EntregaEntradas {
+    background-color: rgb(111, 112, 111, 0.3);
+    border: rgb(111, 112, 111, 0.3) 1px solid;
+    max-width: 710px;
+    min-height: 30px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    border-radius: 5px;
+    display: block;
+    padding-bottom: 8px;
+ }
+
+ .cuerpo > div.EntregaEntradas:last-child {
+    padding-top: 8px;
+ }
+
+
+
+ .cuerpo > div.EntregaEntradas > p {
+    
+    font-family: arial;
+    font-size: 14px;
+    color: white;
+    text-align:center;
+    margin-top:20px;
+    margin-bottom: 20px;
+    margin-left: 5px;
+    margin-right: 5px;
+ }
+
+ .cuerpo > div.EntregaEntradas > p > a {
+    color:white;
+    font-weight: bold;
+ }
+
+ .cuerpo > div.EntregaEntradas > div.Entrada {
+    width: 320px;
+    height: 208px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 10px;
+    background-color: rgb(255, 255, 255, 0);
+    display: flex;
+ }
+
+ .cuerpo > div.EntregaEntradas > div.Entrada > .EntradaCab {
+    width: 141px;
+    height: auto;
+    
+ }
+
+ .EntradaCab img, .EntradaCuer img {
+    position: absolute;
+    top: 0px;
+    left:0px;
+ }
+
+ .EntradaCab p {
+    position: absolute;
+    width: 120px;
+    color:rgb(35, 35, 35);
+ }
+
+ .EntradaCab p.EntrCodeTitle {
+    top:10px;
+    left: 12px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: black 1px dashed;
+    padding-bottom: 3px;
+    text-align: center;
+ }
+
+ .EntradaCab p.EntrCodeVal {
+    top:35px;
+    left: 12px;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 14px;
+    font-weight: normal;
+    border-bottom: black 1px dashed;
+    text-align: center;
+ }
+
+ .EntradaCab p.EntrPeliculaTitle {
+    top:60px;
+    left: 12px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    border-bottom: black 1px dashed;
+    padding-bottom: 3px;
+    text-align: center;
+ }
+
+ .EntradaCab p.EntrPeliculaVal {
+    top:85px;
+    left: 12px;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 14px;
+    font-weight: normal;
+    border-bottom: black 1px dashed;
+    text-align: center;
+ }
+
+ .EntradaCab p.EntrSala {
+    top:130px;
+    left: 12px;
+    font-family:'Times New Roman', Times, serif;
+    font-weight: normal;
+    font-size: 16px;
+    border-bottom: black 1px dashed;
+    padding-bottom: 3px;
+    text-align: center;
+ }
+
+ .EntradaCab p.EntrFechaVal {
+    top:155px;
+    left: 18px;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: left;
+
+ }
+
+ .EntradaCab p.EntrHoraVal {
+    top:168px;
+    left: 18px;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: left;
+
+ }
+
+ .EntradaCab p.EntrButacaVal {
+    top:182px;
+    left: 18px;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: left;
+ }
+
+ .EntradaCab p.EntrSala span {
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight:bold;
+ }
+
+
+ .cuerpo > div.EntregaEntradas > div.Entrada > .EntradaCuer {
+    width: 179px;
+    height: auto;
+ }
+
+ .EntradaCuer p.EntrPeliculaTitle {
+    position: absolute;
+    width: 160px;
+    color:rgb(103, 103, 103);
+    top:55px;
+    left: 2px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    border-top:black 1px dashed;
+    border-bottom: black 1px dashed;
+    padding-bottom: 3px;
+    text-align: left;
+ }
+
+ .EntradaCuer p.EntrPeliculaTitle span {
+    font-family:'Times New Roman', Times, serif;
+    font-weight: normal;
+ }
+
+ .EntradaCuer p.EntrSalaTitle {
+    position: absolute;
+    width: 50px;
+    color:rgb(103, 103, 103);
+    top:100px;
+    left: 2px;
+    font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    border-top:black 0px dashed;
+    border-bottom: black 0px dashed;
+    padding-bottom: 3px;
+    text-align: left;
+ }
+
+ .EntradaCuer p.EntrSalaTitle span {
+    font-family:'Times New Roman', Times, serif;
+    font-weight: normal;
+ }
+
+ .EntradaCuer p.EntrCodeVal {
+    position: absolute;
+    width: 50px;
+    color:rgb(103, 103, 103);
+    top:192px;
+    left: 72px;
+    font-family:'Times New Roman', Times, serif;
+    font-weight: normal;
+    font-size: 12px;
+    border-top:black 0px dashed;
+    border-bottom: black 0px dashed;
+    padding-bottom: 3px;
+    text-align: left;
+ }
+
+
+
+ .EntradaCuer p.EntrFechaVal {
+    width: 40px;
+    top:125px;
+    left: 2px;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: left;
+    color:rgb(103, 103, 103);
+ }
+
+ .EntradaCuer p.EntrHoraVal {
+    width: 40px;
+    top:125px;
+    left: 2px;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: left;
+    color:rgb(103, 103, 103);
+ }
+
+ .EntradaCuer p.EntrButacaVal1 {
+    width: 50px;
+    top:132px;
+    left: 2px;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: left;
+    color:rgb(103, 103, 103);
+ }
+
+ .EntradaCuer p.EntrButacaVal2 {
+    width: 61px;
+    top:133px;
+    left: 2px;
+    font-family:'Times New Roman', Times, serif;
+    font-size: 14px;
+    font-weight: normal;
+    text-align: left;
+    color:rgb(103, 103, 103);
+ }
+
+ img.ImagenQR {
+    position: absolute;
+    top: 105px;
+    left: 71px;
+ }
+
+ /*--------------------------- ADAPTACIÓN RESPONSIVE ---------------------------------------------*/
+  @media (min-width: 1100px) and (max-width: 1340px) {
+
+    /*body {border: rgb(198, 177, 14) 1px solid;}*/
+
+    .cabecera > div, .pie > div {
+        width: 80px;
+        height: 60px;
+        margin-left: 1.5%;
+        margin-right: 1.5%;
+        min-width: 80px;
+    
+    }
+
+    .cabecera > div p {
+        font-size: 1.8vw;
+ 
+    }
+
+  }
+
+@media (min-width: 1000px) and (max-width: 1099px) {
+
+    /*body {border: rgb(7, 131, 129) 1px solid;}*/
+    .cabecera > div, .pie > div {
+        width: 80px;
+        height: 60px;
+        margin-left: 1.0%;
+        margin-right: 1.0%;
+        min-width: 80px;
+    
+    }
+
+    .cabecera > div p {
+        font-size: 2.25vw;
+ 
+    }
+
+  }
+
+
+  @media (min-width: 801px) and (max-width: 999px) {
+    /*body {border: rgb(13, 25, 157) 1px solid;}*/
+    .cabecera > div, .pie > div {
+        width: 60px;
+        height: 45px;
+        margin-left: 1.5%;
+        margin-right: 1.5%;
+        min-width: 60px;
+    
+    }
+
+    .cabecera > div p {
+        font-size: 2.25vw;
+ 
+    }
+  
+  }
+
+  @media (min-width: 751px) and (max-width: 800px) {
+    /*body {border: rgb(14, 119, 9) 1px solid;}*/
+    .cabecera > div, .pie > div {
+        width: 60px;
+        height: 45px;
+        margin-left: 1.0%;
+        margin-right: 1.0%;
+        min-width: 60px;
+    
+    }
+
+    .cabecera > div p {
+        font-size: 2.5vw;
+ 
+    }
+  }
+
+  @media (min-width: 671px) and (max-width: 750px) {
+    /*body {border: rgb(194, 148, 10) 1px solid;}*/
+    .cabecera > div, .pie > div {
+        width: 60px;
+        height: 45px;
+        margin-left: 0.60%;
+        margin-right: 0.60%;
+        min-width: 60px;
+    
+    }
+
+    .cabecera > div p {
+        font-size: 2.5vw;
+ 
+    }
+  }
+
+  @media (min-width: 591px) and (max-width: 670px) {
+    /*body {border: rgb(107, 8, 105) 1px solid;}*/
+    .cabecera > div, .pie > div {
+        width: 48px;
+        height: 36px;
+        margin-left: 1%;
+        margin-right: 1%;
+        min-width: 48px;
+    
+    }
+    .cabecera > div p {
+        font-size: 2.5vw;
+ 
+    }
+
+  }
+
+  @media (max-width: 491px) {
+
+    .subcabecera > div {
+        width: 52px;
+        height: 32px;
+    }
+    
+    .SalaButacas {
+        width: 300px;
+        height: 320px;
+    }
+    
+    .cuerpo > div.Pantalla {
+        width: 300px;
+    }
+    
+    div.Pantalla > div {
+        width: 285px;
+    }
+
+    div.Pantalla > p {
+        width: 300px;
+    }
+    
+    .butaca {
+        width: 19px;
+        height: 19px;
+    }
+
+    form.ButacasFm {
+        width: 300px;
+    }
+
+
+    div.Pantalla > p {
+        font-size: 14px;
+    }
+
+    .CabResumenTar {
+        background-size: 55px 18px;
+       }
+  }
+
+  @media (min-width: 491px) and (max-width: 590px) {
+    /*body {border: rgb(33, 215, 45) 2px solid;}*/
+    .cabecera > div, .pie > div {
+        width: 48px;
+        height: 36px;
+        margin-left: 1%;
+        margin-right: 1%;
+        min-width: 48px;
+    
+    }
+
+    .cabecera > div:last-child, .pie > div:last-child {
+        display: none;
+    
+    }
+
+    .cabecera > div:first-child, .pie > div:first-child {
+        display: none;
+    
+    }
+
+    .cabecera > div p {
+        font-size: 2.5vw;
+ 
+    }
+
+
+}
+
+@media (max-width: 490px) {
+    /*body {border: rgb(65, 2, 2) 2px solid;}*/
+
+    .Slogan {
+        height: 60px;
+    }
+    .NomSitio {
+        height: 60px;
+        background-size: 70%;
+    }
+
+    .cabecera, .pie {
+        height: 60px;
+    }
+    
+    .cabecera > div, .pie > div {
+        width: 48px;
+        height: 36px;
+        margin-left: 1%;
+        margin-right: 1%;
+        min-width: 48px;
+    
+    }
+
+    .cabecera > div:last-child, .pie > div:last-child {
+        display: none;
+    
+    }
+
+    .cabecera > div:first-child, .pie > div:first-child {
+        display: none;
+    
+    }
+
+    .cabecera > div:nth-child(2), .pie > div:nth-child(2){
+        display: none;
+    
+    }
+
+    .cabecera > div p {
+        font-size: 3vw;
+ 
+    }
+
+    .subcabecera > p {
+
+        font-size: 18px;
+
+    }
+
+    .subcabecera > div {
+        background-size: 150px 199px;
+        background-position-x: -89px;
+    }
+}

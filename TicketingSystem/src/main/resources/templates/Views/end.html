@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>El rincón del Cine - Tickets</title>
+	<link rel="stylesheet" th:href="@{/styles/estilos.css}">
+	<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+	<script th:src="@{/js/step3.js}"></script>
+	<script> let MaxNumButacasToSelect = 3; let NumButacasSelected = 0;</script>
+</head>
+
+<body>
+	<div class="bas">
+		<div class="Slogan">
+			<div class="NomSitio"></div>
+		</div>
+	</div>
+	<div class="base">
+		<div class="cabecera">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="subcabecera">
+			<p>¡¡ Compra realizada con éxtio !!</p>
+		</div>
+		<div class="cuerpo">
+			<div class="EntregaEntradas">
+				<p>La compra ha sido realizada con éxito. En breve se enviará un correo electrónico a
+					danielperezperez@ieselrincon.es</p>
+				<p>Si desea imprimir las entradas haga click <a th:href="@{/imrpimirTicket.html}" target="_blank">aquí</a>.
+					También puede capturar los códigos QR que se muestran a continuación.</p>
+			</div>
+			<div class="EntregaEntradas">
+				<div class="Entrada">
+					<div class="EntradaCab">
+						<img th:src="@{/img/means/entrada.gif}" alt="ticket" />
+						<p class="EntrCodeTitle">Código</p>
+						<p class="EntrCodeVal">1000006372127372</p>
+						<p class="EntrPeliculaTitle">Película</p>
+						<p class="EntrPeliculaVal">LightYear</p>
+						<p class="EntrSala"><span>Sala:</span> 2</p>
+						<p class="EntrFechaVal">Fecha: 15/10/2022</p>
+						<p class="EntrHoraVal">Hora: +20:00h</p>
+						<p class="EntrButacaVal">Fila: 5, Butaca: 2</p>
+					</div><!--
+                 -->
+					<div class="EntradaCuer">
+						<img th:src="@{/img/means/entrada-cue.gif}" alt="ticket" />
+						<p class="EntrPeliculaTitle">Película: <span>LightYear</span></p>
+						<p class="EntrSalaTitle">Sala: <span>2</span></p>
+						<p class="EntrFechaVal">15/10/2022</p>
+						<p class="EntrHoraVal">+20:00h</p>
+						<p class="EntrButacaVal1">Fila: 5</p>
+						<p class="EntrButacaVal2">Butaca: 2</p>
+						<img class="ImagenQR"
+							src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=1000006372127372"
+							alt="QR" />
+
+					</div>
+				</div>
+				<div class="Entrada">
+					<div class="EntradaCab">
+						<img th:src="@{/img/means/entrada.gif}" alt="ticket" />
+						<p class="EntrCodeTitle">Código</p>
+						<p class="EntrCodeVal">1000006371112411</p>
+						<p class="EntrPeliculaTitle">Película</p>
+						<p class="EntrPeliculaVal">LightYear</p>
+						<p class="EntrSala"><span>Sala:</span> 2</p>
+						<p class="EntrFechaVal">Fecha: 15/10/2022</p>
+						<p class="EntrHoraVal">Hora: +20:00h</p>
+						<p class="EntrButacaVal">Fila: 5, Butaca: 3</p>
+					</div><!--
+                 -->
+					<div class="EntradaCuer">
+						<img th:src="@{/img/means/entrada-cue.gif}" alt="ticket" />
+						<p class="EntrPeliculaTitle">Película: <span>LightYear</span></p>
+						<p class="EntrSalaTitle">Sala: <span>2</span></p>
+						<p class="EntrFechaVal">15/10/2022</p>
+						<p class="EntrHoraVal">+20:00h</p>
+						<p class="EntrButacaVal1">Fila: 5</p>
+						<p class="EntrButacaVal2">Butaca: 3</p>
+						<img class="ImagenQR"
+							src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=1000006371112411"
+							alt="QR" />
+
+					</div>
+				</div>
+				<div class="Entrada">
+					<div class="EntradaCab">
+						<img th:src="@{/img/means/entrada.gif}" alt="ticket" />
+						<p class="EntrCodeTitle">Código</p>
+						<p class="EntrCodeVal">10000065523281323</p>
+						<p class="EntrPeliculaTitle">Película</p>
+						<p class="EntrPeliculaVal">LightYear</p>
+						<p class="EntrSala"><span>Sala:</span> 2</p>
+						<p class="EntrFechaVal">Fecha: 15/10/2022</p>
+						<p class="EntrHoraVal">Hora: +20:00h</p>
+						<p class="EntrButacaVal">Fila: 5, Butaca: 4</p>
+					</div><!--
+                 -->
+					<div class="EntradaCuer">
+						<img th:src="@{/img/means/entrada-cue.gif}" alt="ticket" />
+						<p class="EntrPeliculaTitle">Película: <span>LightYear</span></p>
+						<p class="EntrSalaTitle">Sala: <span>2</span></p>
+						<p class="EntrFechaVal">15/10/2022</p>
+						<p class="EntrHoraVal">+20:00h</p>
+						<p class="EntrButacaVal1">Fila: 5</p>
+						<p class="EntrButacaVal2">Butaca: 4</p>
+						<img class="ImagenQR"
+							src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=10000065523281323"
+							alt="QR" />
+
+					</div>
+				</div>
+			</div>
+			<div class="EntregaEntradas">
+				<form>
+					<a class="homebtn" th:href="@{/index}">&nbsp;</a>
+				</form>
+			</div>
+		</div>
+		<div class="pie">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+</body>
+
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El rincón del Cine - Películas</title>
+	<link rel="stylesheet" th:href="@{/styles/estilos.css}">
+</head>
+<body>
+    <div class="bas"><div class="Slogan"><div class="NomSitio"></div></div></div>
+    <div class="base">
+        <div class="cabecera"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        <div class="subcabecera"><div class="CuentaAtrasCatro"></div><p>&nbsp;Seleccione una película</p></div>
+        <div class="cuerpo">
+			    <div th:each="sala : ${salas}">
+			        <!-- Enlace a la película -->
+			        <a id="pelicula" class="pelicula" th:href="@{/step2(id=${sala.numeroSala})}">
+			            <!-- Imagen de la película dentro del enlace -->
+						<img th:src="@{'/img/films/billboard/' + ${sala.pelicula} + '.jpg'}" alt="Póster de película">
+			        </a>
+			        <!-- Información de la sala y el precio -->
+			        <div class="info">
+			            <p>
+			                <span th:text="'SALA ' + ${sala.numeroSala}"></span>
+			                - 
+			                <span th:text="${sala.precioEntrada} + ' €'"></span>
+			            </p>
+			        </div>
+			    </div>
+			</div>
+        <div class="pie"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+</body>
+</html>

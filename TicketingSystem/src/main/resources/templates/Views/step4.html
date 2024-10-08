@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El rincón del Cine - Confirmación</title>
+	<link rel="stylesheet" th:href="@{/styles/estilos.css}">
+</head>
+<body>
+    <div class="bas"><div class="Slogan"><div class="NomSitio"></div></div></div>
+    <div class="base">
+        <div class="cabecera"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        <div class="subcabecera"><div class="CuentaAtrasUno"></div><p>&nbsp;Revise y confirme la compra</p></div>
+        <div class="cuerpo">
+           
+            <form class="Fdatabuy" name="Fdatabuy" method="POST" action="./end.html">
+              <div class="CabResumenFac"><p>Datos de facturación</p></div>
+              <div class="CuerResumen">
+                <p><span>Nombre:</span> Daniel</p>
+                <p><span>Apellidos:</span> Pérez Pérez</p>
+                <p><span>E-mail:</span> danielperezperez@ieselrincon.es</p>
+              </div>
+              <div class="CabResumenBuy"><p>Resumen de la reserva</p></div>
+              <div class="CuerResumen">
+                    <p><span>Película:</span> LightYear</p>
+                    <p><span>Sala:</span> 3</p>
+                    <p><span>Fecha:</span> 15/10/2022</p>
+                    <p><span>Sesión:</span> +20:00h</p>
+                    <p><span>Adultos:</span> 2 x 6.5€</p>
+                    <p><span>&lt; 12 años:</span> 1 x 4.5€</p>
+                    <p><span>Butacas:</span> F5B2, F5B3, F5B4</p>
+              </div>
+              <div class="CabResumenFac"><p><span>TOTAL: 17.5 €</span></p></div>
+              <div class="CabResumenTar"><p>Confirmación de compra</p></div>
+              <div class="DatTarjeta">
+                <div><label>Titular:</label><input type="text" name="ftitulartarjeta" value="" required/></div>
+                <div><label>Nº Tarjeta:</label><input type="number" name="fnumtarjeta" min="1000000000000000" max="9999999999999999" value="" step="1" required/></div>
+                <div>
+                  <label>Mes:</label>
+                  <select name="fMesCaduca">
+                    <option>01</option>
+                    <option>02</option>
+                    <option>03</option>
+                    <option>04</option>
+                    <option>05</option>
+                    <option>06</option>
+                    <option>07</option>
+                    <option>08</option>
+                    <option>09</option>
+                    <option>10</option>
+                    <option>11</option>
+                    <option>12</option>
+                  </select>
+                  <label>Año:</label>
+                  <select name="fAnioCaduca">
+                    <option>22</option>
+                    <option>23</option>
+                    <option>24</option>
+                    <option>25</option>
+                    <option>26</option>
+                    <option>27</option>
+                    <option>28</option>
+                    <option>29</option>
+                    <option>30</option>
+                    <option>31</option>
+                    <option>32</option>
+                    <option>33</option>
+                    <option>34</option>
+                    <option>35</option>
+                    <option>36</option>
+                    <option>37</option>
+                    <option>38</option>
+                    <option>39</option>
+                    <option>40</option>
+                  </select>               
+                </div>
+                <div><label>CCS:</label><input type="number" name="fccstarjeta" min="0" max="999" value="" step="1" required/></div>
+              </div>
+              <div class="DatTarjeta">
+                <a class="atrasbtn" th:href="@{/step3.html}">&lt;&lt; Atras</a><a class="homebtn" th:href="@{/index.html}">&nbsp;</a><input type="submit" value="Confirmar" />
+              </div>
+            </form>
+        </div>
+        <div class="pie"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+</body>
+</html>

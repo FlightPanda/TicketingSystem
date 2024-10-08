@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>El rincón del Cine - Butacas</title>
+	<link rel="stylesheet" th:href="@{/styles/estilos.css}">
+	<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
+	<script th:src="@{/js/step3.js}"></script>
+	<script> let MaxNumButacasToSelect = 3; let NumButacasSelected = 0;</script>
+</head>
+
+<body>
+	<div class="bas">
+		<div class="Slogan">
+			<div class="NomSitio"></div>
+		</div>
+	</div>
+	<div class="base">
+		<div class="cabecera">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="subcabecera">
+			<div class="CuentaAtrasDos"></div>
+			<p>&nbsp;Seleccione las butacas</p>
+		</div>
+		<div class="cuerpo">
+			<div class="Pantalla">
+				<div></div>
+				<p></p>
+			</div>
+			<div class="SalaButacas">
+				<div class="ButacasIzq">
+					<div class="seccion">
+						<div id="F1B1" class="butaca"></div>
+						<div id="F1B2" class="butaca"></div>
+						<div id="F1B3" class="butaca"></div>
+						<div id="F1B4" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F2B1" class="butaca"></div>
+						<div id="F2B2" class="butaca"></div>
+						<div id="F2B3" class="butaca"></div>
+						<div id="F2B4" class="butaca"></div>
+						<div id="F2B5" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F3B1" class="butaca"></div>
+						<div id="F3B2" class="butaca"></div>
+						<div id="F3B3" class="butaca"></div>
+						<div id="F3B4" class="butaca"></div>
+						<div id="F3B5" class="butaca"></div>
+						<div id="F3B6" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F4B1" class="butaca"></div>
+						<div id="F4B2" class="butaca"></div>
+						<div id="F4B3" class="butaca"></div>
+						<div id="F4B4" class="butaca"></div>
+						<div id="F4B5" class="butaca"></div>
+						<div id="F4B6" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F5B1" class="butaca"></div>
+						<div id="F5B2" class="butaca"></div>
+						<div id="F5B3" class="butaca"></div>
+						<div id="F5B4" class="butaca"></div>
+						<div id="F5B5" class="butaca"></div>
+						<div id="F5B6" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F6B1" class="butaca"></div>
+						<div id="F6B2" class="butaca"></div>
+						<div id="F6B3" class="butaca"></div>
+						<div id="F6B4" class="butaca"></div>
+						<div id="F6B5" class="butaca"></div>
+						<div id="F6B6" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F7B1" class="butaca"></div>
+						<div id="F7B2" class="butaca"></div>
+						<div id="F7B3" class="butaca"></div>
+						<div id="F7B4" class="butaca"></div>
+						<div id="F7B5" class="butaca"></div>
+						<div id="F7B6" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F8B1" class="butaca"></div>
+						<div id="F8B2" class="butaca"></div>
+						<div id="F8B3" class="butaca"></div>
+						<div id="F8B4" class="butaca"></div>
+						<div id="F8B5" class="butaca"></div>
+						<div id="F8B6" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F9B1" class="butaca"></div>
+						<div id="F9B2" class="butaca"></div>
+						<div id="F9B3" class="butaca"></div>
+						<div id="F9B4" class="butaca"></div>
+						<div id="F9B5" class="butaca"></div>
+						<div id="F9B6" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F10B1" class="butaca"></div>
+						<div id="F10B2" class="butaca"></div>
+						<div id="F10B3" class="butaca"></div>
+						<div id="F10B4" class="butaca"></div>
+						<div id="F10B5" class="butaca"></div>
+						<div id="F10B6" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F11B1" class="butaca"></div>
+						<div id="F11B2" class="butaca"></div>
+						<div id="F11B3" class="butaca"></div>
+						<div id="F11B4" class="butaca"></div>
+						<div id="F11B5" class="butaca"></div>
+						<div id="F11B6" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F12B1" class="butaca"></div>
+						<div id="F12B2" class="butaca"></div>
+						<div id="F12B3" class="butaca"></div>
+						<div id="F12B4" class="butaca"></div>
+						<div id="F12B5" class="butaca"></div>
+						<div id="F12B6" class="butaca"></div>
+					</div>
+				</div>
+				<div class="ButacasDer">
+					<div class="seccion">
+						<div id="F1B5" class="butaca"></div>
+						<div id="F1B6" class="butaca"></div>
+						<div id="F1B7" class="butaca"></div>
+						<div id="F1B8" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F2B6" class="butaca"></div>
+						<div id="F2B7" class="butaca"></div>
+						<div id="F2B8" class="butaca"></div>
+						<div id="F2B9" class="butaca"></div>
+						<div id="F2B10" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F3B7" class="butaca"></div>
+						<div id="F3B8" class="butaca"></div>
+						<div id="F3B9" class="butaca"></div>
+						<div id="F3B10" class="butaca"></div>
+						<div id="F3B11" class="butaca"></div>
+						<div id="F3B12" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F4B7" class="butaca"></div>
+						<div id="F4B8" class="butaca"></div>
+						<div id="F4B9" class="butaca"></div>
+						<div id="F4B10" class="butaca"></div>
+						<div id="F4B11" class="butaca"></div>
+						<div id="F4B12" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F5B7" class="butaca"></div>
+						<div id="F5B8" class="butaca"></div>
+						<div id="F5B9" class="butaca"></div>
+						<div id="F5B10" class="butaca"></div>
+						<div id="F5B11" class="butaca"></div>
+						<div id="F5B12" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F6B7" class="butaca"></div>
+						<div id="F6B8" class="butaca"></div>
+						<div id="F6B9" class="butaca"></div>
+						<div id="F6B10" class="butaca"></div>
+						<div id="F6B11" class="butaca"></div>
+						<div id="F6B12" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F7B7" class="butaca"></div>
+						<div id="F7B8" class="butaca"></div>
+						<div id="F7B9" class="butaca"></div>
+						<div id="F7B10" class="butaca"></div>
+						<div id="F7B11" class="butaca"></div>
+						<div id="F7B12" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F8B7" class="butaca"></div>
+						<div id="F8B8" class="butaca"></div>
+						<div id="F8B9" class="butaca"></div>
+						<div id="F8B10" class="butaca"></div>
+						<div id="F8B11" class="butaca"></div>
+						<div id="F8B12" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F9B7" class="butaca"></div>
+						<div id="F9B8" class="butaca"></div>
+						<div id="F9B9" class="butaca"></div>
+						<div id="F9B10" class="butaca"></div>
+						<div id="F9B11" class="butaca"></div>
+						<div id="F9B12" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F10B7" class="butaca"></div>
+						<div id="F10B8" class="butaca"></div>
+						<div id="F10B9" class="butaca"></div>
+						<div id="F10B10" class="butaca"></div>
+						<div id="F10B11" class="butaca"></div>
+						<div id="F10B12" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F11B7" class="butaca"></div>
+						<div id="F11B8" class="butaca"></div>
+						<div id="F11B9" class="butaca"></div>
+						<div id="F11B10" class="butaca"></div>
+						<div id="F11B11" class="butaca"></div>
+						<div id="F11B12" class="butaca"></div>
+					</div>
+					<div class="seccion">
+						<div id="F12B7" class="butaca"></div>
+						<div id="F12B8" class="butaca"></div>
+						<div id="F12B9" class="butaca"></div>
+						<div id="F12B10" class="butaca"></div>
+						<div id="F12B11" class="butaca"></div>
+						<div id="F12B12" class="butaca"></div>
+					</div>
+				</div>
+			</div><!--
+             -->
+			<form class="ButacasFm" name="FDataButacas" method="POST" th:action="@{/step4}">
+				<input id="txtButacas" type="hidden" name="FButacasSelected" value="" />
+				<a class="atrasbtn" th:href="@{/step2}">&lt;&lt; Atras</a><a class="homebtn"
+					th:href="@{/index}">&nbsp;</a><input id="SubmitButacas" type="submit" value="Siguiente &gt;&gt;" />
+			</form>
+		</div>
+		<div class="pie">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+</body>
+
+</html>

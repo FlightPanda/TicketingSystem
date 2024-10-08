@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>El rincón del Cine - WebSite</title>
+	<link rel="stylesheet" th:href="@{/styles/estilos.css}">
+</head>
+
+//Ctrl + Shift + F Organiza el código
+
+<body>
+	<div class="bas">
+		<div class="Slogan">
+			<div class="NomSitio">
+			</div>
+		</div>
+	</div>
+	<div class="base">
+		<div class="cabecera">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="subcabecera">
+			<p class="fechor">
+				<span class="hora" th:text="${hora}"></span>
+				<span class="fecha"th:text="${fecha}"></span>
+			</p>
+		</div>
+		<div class="cuerpo">
+			<div class="spot1">
+				<div>
+					<p th:text="${mensajeDelDia}"></p>
+					<p><span th:text="'desde ' + ${precioEntrada} + ' €'"></span></p>
+				</div>
+			</div>
+			<div class="spot2"><a th:href="@{/step1}">Reserva tu entrada</a></div>
+		</div>
+		<div class="pie">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
+	<!--
+		<div><p></p>Paso [1]: Seleccione los productos</div>
+	<div>
+		<div><p>7 €</p></div>
+		<div></div>
+		<div><a th:href="@{/seccion1/operacion?num1=5&num2=6&oper=sum}">+</a><p>0</p><a href="#">-</a></div>
+	</div>
+	<div>
+		<div><p>6 €</p></div>
+		<div></div>
+		<div><a href="#">+</a><p>0</p><a href="#">-</a></div>
+	</div>
+	<div>
+		<div><p>5 €</p></div>
+		<div></div>
+		<div><a href="#">+</a><p>0</p><a href="#">-</a></div>
+	</div>
+	<div>
+		<div><p>8 €</p></div>
+		<div></div>
+		<div><a href="#">+</a><p>0</p><a href="#">-</a></div>
+	</div>
+	-->
+</body>
+
+</html>
