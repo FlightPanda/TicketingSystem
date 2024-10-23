@@ -1,82 +1,88 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>El rincón del Cine - Reserva</title>
-    <link rel="stylesheet" th:href="@{/styles/estilos.css}">
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>El rincón del Cine - Reserva</title>
+	<link rel="stylesheet" th:href="@{/styles/estilos.css}">
 </head>
+
 <body>
-    <div class="bas">
-        <div class="Slogan">
-            <div class="NomSitio"></div>
-        </div>
-    </div>
-    <div class="base">
-        <div class="cabecera">
-            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-        </div>
-        <div class="subcabecera">
-            <div class="CuentaAtrasTres"></div>
-            <p>&nbsp;Introduzca los datos</p>
-        </div>
-        <div class="cuerpo" th:style="'background-image: url(' + @{/img/means/fondo21-3.gif} + ');'">
-            <form class="Fdatares" name="Fdatareserva" method="POST" action="./step3.html">
-                <div th:style="'background-image: url(' + @{/img/films/billboard/film3.jpg} + ');'"></div>
-                <div class="DatPer">
-                    <div>
-                        <label>Nombre:</label>
-                        <input type="text" name="fnom" />
-                    </div>
-                    <div>
-                        <label>Apellidos:</label>
-                        <input type="text" name="fapell" />
-                    </div>
-                    <div>
-                        <label>e-mail:</label>
-                        <input type="email" name="fmail" />
-                    </div>
-                    <div>
-                        <label>Repetir e-mail:</label>
-                        <input type="email" name="frepmail" />
-                    </div>
-                </div>
-                <div class="DatRes">
-                    <div>
-                        <label>Fecha:</label>
-                        <input type="date" name="fdate" min="2022-09-10" max="2022-12-01" />
-                    </div>
-                    <div>
-                        <label>Hora:</label>
-                        <input type="time" name="fhour" list="popularHours" value="17:00" min="17:00" max="23:00" step="10800" />
-                        <datalist id="popularHours">
-                            <option value="17:00"></option>
-                            <option value="20:00"></option>
-                            <option value="23:00"></option>
-                        </datalist>
-                    </div>
-                    <div class="VerticalAling">
-                        <label class="numentradas">Nº adultos:</label>
-                        <input type="number" name="fnumentradasadult" min="1" max="60" value="1" step="1" />
-                    </div>
-                    <div class="VerticalAling">
-                        <label class="numentradas">Nº menores 12 años:</label>
-                        <input type="number" name="fnumentradasmen" min="0" max="60" value="0" step="1" />
-                    </div>
-                </div>
-                <div>
-                    <div>
-                        <a class="atrasbtn" th:href="@{/step1}">&lt;&lt; Atras</a>
-                        <a class="homebtn" th:href="@{/index}">&nbsp;</a>
-                        <input type="submit" value="Siguiente &gt;&gt;" />
-                    </div>
-                </div>
-            </form>
-        </div>
-        <div class="pie">
-            <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
-        </div>
-    </div>
+	<div class="bas">
+		<div class="Slogan">
+			<div class="NomSitio"></div>
+		</div>
+	</div>
+	<div class="base">
+		<div class="cabecera">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+		<div class="subcabecera">
+			<div class="CuentaAtrasTres"></div>
+			<p>&nbsp;Introduzca los datos</p>
+		</div>
+		<div class="cuerpo" th:style="'background-image: url(' + @{/img/means/fondo21-3.gif} + ');'">
+
+			<form class="Fdatares" name="Fdatareserva" method="POST" th:action="@{/step3}">
+				<!-- Imagen de la película seleccionada -->
+				<div class="mini-billboard-selected">
+					<div>
+						<div
+							th:style="'background-image: url(' + @{/img/films/billboard/} + ${filmSeleccionado} + '.jpg);'">
+						</div>
+					</div>
+				</div>
+
+				<div class="DatPer">
+					<div><label>Nombre:</label><input type="text" name="fnom" /></div>
+					<div><label>Apellidos:</label><input type="text" name="fapell" /></div>
+					<div><label>e-mail:</label><input type="email" name="fmail" /></div>
+					<div><label>Repetir e-mail:</label><input type="email" name="frepmail" /></div>
+				</div>
+
+				<div class="DatRes">
+					<div><label>Fecha:</label><input type="date" name="fdate" min="2022-09-10" max="2022-12-01" /></div>
+					<div><label>Hora:</label><input type="time" name="fhour" list="popularHours" value="17:00"
+							min="17:00" max="23:00" step="10800" />
+						<datalist id="popularHours">
+							<option value="17:00">
+							<option value="20:00">
+							<option value="23:00">
+						</datalist>
+					</div>
+					<div class="VerticalAling"><label class="numentradas">Nº adultos:</label><input type="number"
+							name="fnumentradasadult" min="1" max="60" value="1" step="1" /></div>
+					<div class="VerticalAling"><label class="numentradas">Nº menores 12 años:</label><input
+							type="number" name="fnumentradasmen" min="0" max="60" value="0" step="1" /></div>
+				</div>
+				<div>
+					<div><a class="atrasbtn" th:href="@{/step1}">&lt;&lt; Atras</a><a class="homebtn"
+							th:href="@{/index}">&nbsp;</a><input type="submit" value="Siguiente &gt;&gt;" /></div>
+				</div>
+			</form>
+		</div>
+		<div class="pie">
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+			<div></div>
+		</div>
+	</div>
 </body>
+
 </html>
