@@ -42,18 +42,29 @@
 						</div>
 					</div>
 				</div>
+				<p th:if="${errorGeneral != null}" th:text="${errorGeneral}" class="error-message"></p>
 
 				<div class="DatPer">
-					<div><label>Nombre:</label><input type="text" name="fnom" /></div>
-					<div><label>Apellidos:</label><input type="text" name="fapell" /></div>
-					<div><label>e-mail:</label><input type="email" name="fmail" /></div>
-					<div><label>Repetir e-mail:</label><input type="email" name="frepmail" /></div>
+					<div><label>Nombre:</label>
+						<input type="text" name="fnom" th:value="${nombre}" th:classappend="${errorCampos} ? 'input-error' : ''" required />
+					</div>
+					<div><label>Apellidos:</label>
+						<input type="text" name="fapell" th:value="${apellidos}" th:classappend="${errorCampos} ? 'input-error' : ''" required />
+					</div>
+					<div><label>e-mail:</label>
+						<input type="email" name="fmail" th:value="${email}" th:classappend="${errorCampos} ? 'input-error' : ''" required />
+					</div>
+					<div><label>Repetir e-mail:</label>
+						<input type="email" name="frepmail" th:value="${repEmail}" th:classappend="${errorCampos} ? 'input-error' : ''" required />
+						</div>
 				</div>
 
 				<div class="DatRes">
-					<div><label>Fecha:</label><input type="date" name="fdate" min="2022-09-10" max="2022-12-01" /></div>
+					<div><label>Fecha:</label>
+						<input type="date" name="fdate" min="2024-11-01" max="2024-12-01" th:value="${fecha}" th:classappend="${errorCampos} ? 'input-error' : ''" required />
+						</div>
 					<div><label>Hora:</label><input type="time" name="fhour" list="popularHours" value="17:00"
-							min="17:00" max="23:00" step="10800" />
+							min="17:00" max="23:00" step="10800" th:value="${hora ?: '17:00'}" required />
 						<datalist id="popularHours">
 							<option value="17:00">
 							<option value="20:00">
@@ -61,9 +72,11 @@
 						</datalist>
 					</div>
 					<div class="VerticalAling"><label class="numentradas">Nº adultos:</label><input type="number"
-							name="fnumentradasadult" min="1" max="60" value="1" step="1" /></div>
+							name="fnumentradasadult" min="1" max="60" value="1" step="1"
+							th:value="${numEntradasAdult ?: 1}" /></div>
 					<div class="VerticalAling"><label class="numentradas">Nº menores 12 años:</label><input
-							type="number" name="fnumentradasmen" min="0" max="60" value="0" step="1" /></div>
+							type="number" name="fnumentradasmen" min="0" max="60" value="0" step="1"
+							th:value="${numEntradasMen ?: 0}" /></div>
 				</div>
 				<div>
 					<div><a class="atrasbtn" th:href="@{/step1}">&lt;&lt; Atras</a><a class="homebtn"
