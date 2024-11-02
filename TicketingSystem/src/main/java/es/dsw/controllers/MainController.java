@@ -68,7 +68,7 @@ public class MainController {
 	}
 
 	@GetMapping("/step1")
-	public String step1(Model model) {
+	public String step1(Model model, HttpSession session) {
 		LocalDateTime now = LocalDateTime.now();
 		DayOfWeek dayOfWeek = now.getDayOfWeek();
 
@@ -92,6 +92,7 @@ public class MainController {
 		}
 
 		model.addAttribute("salas", salas);
+		session.removeAttribute("filmSeleccionado");
 
 		return "Views/step1";
 	}
@@ -113,22 +114,57 @@ public class MainController {
 	}
 
 	@PostMapping("/step3")
-	public String step3(@RequestParam("fnom") String nombre, @RequestParam("fmail") String email,
-			@RequestParam("frepmail") String repEmail, Model model, HttpSession session) {
-		if (nombre.isEmpty() || !email.equalsIgnoreCase(repEmail)) {
-			model.addAttribute("error", "Datos inválidos. Revise los campos.");
+	public String step3(
+			@RequestParam("fnom") String nombre, 
+			@RequestParam("fapell") String apellidos,
+			@RequestParam("fmail") String email, 
+			@RequestParam("frepmail") String repEmail,
+			@RequestParam("fdate") String fecha, 
+			@RequestParam("fhour") String hora,
+			@RequestParam("fnumentradasadult") int numEntradasAdult,
+			@RequestParam("fnumentradasmen") int numEntradasMen, 
+			Model model, HttpSession session) {
 
-			String filmSeleccionado = (String) session.getAttribute("filmSeleccionado");
-			model.addAttribute("filmSeleccionado", filmSeleccionado);
+		 boolean hasError = (nombre == null || nombre.isEmpty() ||
+                 apellidos == null || apellidos.isEmpty() ||
+                 email == null || email.isEmpty() ||
+                 !email.equals(repEmail) ||
+                 fecha == null || fecha.isEmpty());
+		 
+		 if (hasError) {
+		        model.addAttribute("errorGeneral", "Por favor, complete todos los campos obligatorios y asegúrese de que los correos coincidan.");
+		        model.addAttribute("filmSeleccionado", session.getAttribute("filmSeleccionado"));
+		        model.addAttribute("nombre", nombre);
+		        model.addAttribute("apellidos", apellidos);
+		        model.addAttribute("email", email);
+		        model.addAttribute("repEmail", repEmail);
+		        model.addAttribute("fecha", fecha);
+		        model.addAttribute("hora", hora);
+		        model.addAttribute("numEntradasAdult", numEntradasAdult);
+		        model.addAttribute("numEntradasMen", numEntradasMen);
+		        
+		        model.addAttribute("errorCampos", true);
 
-			return "Views/step2";
-		}
+
+		        return "Views/step2";
+		    }
 
 		session.setAttribute("nombre", nombre);
+		session.setAttribute("apellidos", apellidos);
 		session.setAttribute("email", email);
+		session.setAttribute("fecha", fecha);
+		session.setAttribute("hora", hora);
+		session.setAttribute("numEntradasAdult", numEntradasAdult);
+		session.setAttribute("numEntradasMen", numEntradasMen);
 
-		String filmSeleccionado = (String) session.getAttribute("filmSeleccionado");
-		model.addAttribute("filmSeleccionado", filmSeleccionado);
+		model.addAttribute("filmSeleccionado", session.getAttribute("filmSeleccionado"));
+		model.addAttribute("nombre", nombre);
+		model.addAttribute("apellidos", apellidos);
+		model.addAttribute("email", email);
+		model.addAttribute("fecha", fecha);
+		model.addAttribute("hora", hora);
+		model.addAttribute("numEntradasAdult", numEntradasAdult);
+		model.addAttribute("numEntradasMen", numEntradasMen);
 
 		return "Views/step3";
 	}

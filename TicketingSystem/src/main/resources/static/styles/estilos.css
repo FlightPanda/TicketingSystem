@@ -1297,4 +1297,14 @@ form.Fdatabuy input[type="text"]:hover, form.Fdatabuy input[type="number"]:hover
         background-size: 150px 199px;
         background-position-x: -89px;
     }
+	
+	.input-error {
+	    border: 2px solid red !important;
+	}
+
+	.error-message {
+	    color: red;
+	    font-weight: bold !important;
+	}
+
 }
