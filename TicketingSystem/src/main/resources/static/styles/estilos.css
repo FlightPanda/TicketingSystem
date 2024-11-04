@@ -452,12 +452,12 @@ form.Fdatares input[type="number"] {
     margin-left: 5px;
 }
 
-form.Fdatares input:hover{
+form.Fdatares input:hover:not(.input-error) {
     outline: none;
     border-color:rgb(243, 251, 7);
  }
 
-form.Fdatares input:focus{
+form.Fdatares input:focus:not(.input-error){
     outline: none;
     border-color:rgb(251, 210, 7);
  }
@@ -501,7 +501,10 @@ form input[type="submit"]:hover, form a:hover, form a.homebtn:hover {
     border-color:rgb(255, 255, 255, 0.5);
 }
 
-
+form.Fdatares .input-error {
+    border: 2px solid red !important;
+	outline: none;
+}
 
 /*--------------------------- ESTILOS DE STEP3.HTML ---------------------------------------------*/
 
@@ -1297,14 +1300,4 @@ form.Fdatabuy input[type="text"]:hover, form.Fdatabuy input[type="number"]:hover
         background-size: 150px 199px;
         background-position-x: -89px;
     }
-	
-	.input-error {
-	    border: 2px solid red !important;
-	}
-
-	.error-message {
-	    color: red;
-	    font-weight: bold !important;
-	}
-
 }

@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import es.dsw.models.Sala;
 import jakarta.servlet.http.HttpSession;
-
 import org.springframework.ui.Model;
 
 @Controller
@@ -109,45 +108,62 @@ public class MainController {
 		}
 
 		model.addAttribute("filmSeleccionado", session.getAttribute("filmSeleccionado"));
+		model.addAttribute("nombre", session.getAttribute("nombre"));
+		model.addAttribute("apellidos", session.getAttribute("apellidos"));
+		model.addAttribute("email", session.getAttribute("email"));
+		model.addAttribute("repEmail", session.getAttribute("repEmail"));
+		model.addAttribute("fecha", session.getAttribute("fecha"));
+		model.addAttribute("hora", session.getAttribute("hora"));
+		model.addAttribute("numEntradasAdult", session.getAttribute("numEntradasAdult"));
+		model.addAttribute("numEntradasMen", session.getAttribute("numEntradasMen"));
 
 		return "Views/step2";
 	}
 
 	@PostMapping("/step3")
-	public String step3(
-			@RequestParam("fnom") String nombre, 
-			@RequestParam("fapell") String apellidos,
-			@RequestParam("fmail") String email, 
-			@RequestParam("frepmail") String repEmail,
-			@RequestParam("fdate") String fecha, 
-			@RequestParam("fhour") String hora,
+	public String step3(@RequestParam("fnom") String nombre, @RequestParam("fapell") String apellidos,
+			@RequestParam("fmail") String email, @RequestParam("frepmail") String repEmail,
+			@RequestParam("fdate") String fecha, @RequestParam("fhour") String hora,
 			@RequestParam("fnumentradasadult") int numEntradasAdult,
-			@RequestParam("fnumentradasmen") int numEntradasMen, 
-			Model model, HttpSession session) {
+			@RequestParam("fnumentradasmen") int numEntradasMen, Model model, HttpSession session) {
 
-		 boolean hasError = (nombre == null || nombre.isEmpty() ||
-                 apellidos == null || apellidos.isEmpty() ||
-                 email == null || email.isEmpty() ||
-                 !email.equals(repEmail) ||
-                 fecha == null || fecha.isEmpty());
-		 
-		 if (hasError) {
-		        model.addAttribute("errorGeneral", "Por favor, complete todos los campos obligatorios y asegúrese de que los correos coincidan.");
-		        model.addAttribute("filmSeleccionado", session.getAttribute("filmSeleccionado"));
-		        model.addAttribute("nombre", nombre);
-		        model.addAttribute("apellidos", apellidos);
-		        model.addAttribute("email", email);
-		        model.addAttribute("repEmail", repEmail);
-		        model.addAttribute("fecha", fecha);
-		        model.addAttribute("hora", hora);
-		        model.addAttribute("numEntradasAdult", numEntradasAdult);
-		        model.addAttribute("numEntradasMen", numEntradasMen);
-		        
-		        model.addAttribute("errorCampos", true);
+		boolean hasError = false;
 
+		if (nombre == null || nombre.isEmpty()) {
+			model.addAttribute("errorNombre", true);
+			hasError = true;
+		}
+		if (apellidos == null || apellidos.isEmpty()) {
+			model.addAttribute("errorApellidos", true);
+			hasError = true;
+		}
+		if (email == null || email.isEmpty()) {
+			model.addAttribute("errorEmail", true);
+			hasError = true;
+		}
+		if (!email.equals(repEmail)) {
+			model.addAttribute("errorRepEmail", true);
+			hasError = true;
+		}
+		if (fecha == null || fecha.isEmpty()) {
+			model.addAttribute("errorFecha", true);
+			hasError = true;
+		}
 
-		        return "Views/step2";
-		    }
+		if (hasError) {
+			model.addAttribute("filmSeleccionado", session.getAttribute("filmSeleccionado"));
+			model.addAttribute("nombre", nombre);
+			model.addAttribute("apellidos", apellidos);
+			model.addAttribute("email", email);
+			model.addAttribute("repEmail", repEmail);
+			model.addAttribute("fecha", fecha);
+			model.addAttribute("hora", hora);
+			model.addAttribute("numEntradasAdult", numEntradasAdult);
+			model.addAttribute("numEntradasMen", numEntradasMen);
+			model.addAttribute("errorCampos", true);
+
+			return "Views/step2";
+		}
 
 		session.setAttribute("nombre", nombre);
 		session.setAttribute("apellidos", apellidos);

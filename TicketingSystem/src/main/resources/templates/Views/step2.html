@@ -10,8 +10,6 @@
 </head>
 
 <body>
-	<div class="bas">
-		<div class="Slogan">
 			<div class="NomSitio"></div>
 		</div>
 	</div>
@@ -42,29 +40,27 @@
 						</div>
 					</div>
 				</div>
-				<p th:if="${errorGeneral != null}" th:text="${errorGeneral}" class="error-message"></p>
-
 				<div class="DatPer">
 					<div><label>Nombre:</label>
-						<input type="text" name="fnom" th:value="${nombre}" th:classappend="${errorCampos} ? 'input-error' : ''" required />
+						<input type="text" name="fnom" th:value="${nombre}" th:classappend="${errorNombre} ? ' input-error' : ''" />
 					</div>
 					<div><label>Apellidos:</label>
-						<input type="text" name="fapell" th:value="${apellidos}" th:classappend="${errorCampos} ? 'input-error' : ''" required />
+						<input type="text" name="fapell" th:value="${apellidos}" th:classappend="${errorApellidos} ? ' input-error' : ''" />
 					</div>
 					<div><label>e-mail:</label>
-						<input type="email" name="fmail" th:value="${email}" th:classappend="${errorCampos} ? 'input-error' : ''" required />
+						<input type="email" name="fmail" th:value="${email}" th:classappend="${errorEmail} ? ' input-error' : ''" />
 					</div>
 					<div><label>Repetir e-mail:</label>
-						<input type="email" name="frepmail" th:value="${repEmail}" th:classappend="${errorCampos} ? 'input-error' : ''" required />
+						<input type="email" name="frepmail" th:value="${repEmail}" th:classappend="${errorRepEmail} ? ' input-error' : ''" />
 						</div>
 				</div>
 
 				<div class="DatRes">
 					<div><label>Fecha:</label>
-						<input type="date" name="fdate" min="2024-11-01" max="2024-12-01" th:value="${fecha}" th:classappend="${errorCampos} ? 'input-error' : ''" required />
+						<input type="date" name="fdate" min="2024-11-01" max="2024-12-01" th:value="${fecha}" th:classappend="${errorFecha} ? ' input-error' : ''" />
 						</div>
 					<div><label>Hora:</label><input type="time" name="fhour" list="popularHours" value="17:00"
-							min="17:00" max="23:00" step="10800" th:value="${hora ?: '17:00'}" required />
+							min="17:00" max="23:00" step="10800" th:value="${hora ?: '17:00'}" />
 						<datalist id="popularHours">
 							<option value="17:00">
 							<option value="20:00">
