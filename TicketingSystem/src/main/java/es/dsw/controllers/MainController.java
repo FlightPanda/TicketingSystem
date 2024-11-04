@@ -20,7 +20,9 @@ import org.springframework.ui.Model;
 public class MainController {
 
 	@GetMapping(value = { "/", "/index" })
-	public String index(Model model) {
+	public String index(Model model, HttpSession session) {
+        session.invalidate(); // Limpia la sesión al acceder a index
+        
 		LocalDateTime now = LocalDateTime.now();
 
 		DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH'h' mm'm'");
@@ -141,7 +143,7 @@ public class MainController {
 			model.addAttribute("errorEmail", true);
 			hasError = true;
 		}
-		if (!email.equals(repEmail)) {
+		if (!email.equalsIgnoreCase(repEmail)) {
 			model.addAttribute("errorRepEmail", true);
 			hasError = true;
 		}
