@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import es.dsw.models.Sala;
+import es.dsw.models.UsuarioReserva;
 import jakarta.servlet.http.HttpSession;
 import org.springframework.ui.Model;
 
@@ -167,22 +168,18 @@ public class MainController {
 			return "Views/step2";
 		}
 
-		session.setAttribute("nombre", nombre);
-		session.setAttribute("apellidos", apellidos);
-		session.setAttribute("email", email);
-		session.setAttribute("fecha", fecha);
-		session.setAttribute("hora", hora);
-		session.setAttribute("numEntradasAdult", numEntradasAdult);
-		session.setAttribute("numEntradasMen", numEntradasMen);
+		UsuarioReserva usuarioReserva = new UsuarioReserva();
+		usuarioReserva.setNombre(nombre);
+		usuarioReserva.setApellidos(apellidos);
+		usuarioReserva.setEmail(email);
+		usuarioReserva.setFecha(fecha);
+		usuarioReserva.setHora(hora);
+		usuarioReserva.setNumEntradasAdult(numEntradasAdult);
+		usuarioReserva.setNumEntradasMen(numEntradasMen);
+		session.setAttribute("usuarioReserva", usuarioReserva);
 
 		model.addAttribute("filmSeleccionado", session.getAttribute("filmSeleccionado"));
-		model.addAttribute("nombre", nombre);
-		model.addAttribute("apellidos", apellidos);
-		model.addAttribute("email", email);
-		model.addAttribute("fecha", fecha);
-		model.addAttribute("hora", hora);
-		model.addAttribute("numEntradasAdult", numEntradasAdult);
-		model.addAttribute("numEntradasMen", numEntradasMen);
+		model.addAttribute("usuarioReserva", usuarioReserva);
 
 		return "Views/step3";
 	}
