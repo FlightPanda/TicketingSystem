@@ -302,6 +302,11 @@ a.pelicula:hover {
  
 }
 
+div.info p span.precio-amarillo {
+    color: yellow;
+    font-weight: bold;
+}
+
 /*--------------------------- ESTILOS DE STEP2.HTML ---------------------------------------------*/
 
 form.Fdatares {
