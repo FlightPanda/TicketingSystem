@@ -136,10 +136,6 @@ public class MainController {
 			model.addAttribute("errorNombre", true);
 			hasError = true;
 		}
-		if (apellidos == null || apellidos.isEmpty()) {
-			model.addAttribute("errorApellidos", true);
-			hasError = true;
-		}
 		if (email == null || email.isEmpty()) {
 			model.addAttribute("errorEmail", true);
 			hasError = true;
@@ -152,6 +148,16 @@ public class MainController {
 			model.addAttribute("errorFecha", true);
 			hasError = true;
 		}
+		
+	    if (hora == null || hora.isEmpty()) {
+	        model.addAttribute("errorHora", true);
+	        hasError = true;
+	    }
+	    
+	    if (numEntradasAdult < 1) { 
+	        model.addAttribute("errorNumEntradasAdult", true);
+	        hasError = true;
+	    }
 
 		if (hasError) {
 			model.addAttribute("filmSeleccionado", session.getAttribute("filmSeleccionado"));
@@ -163,7 +169,6 @@ public class MainController {
 			model.addAttribute("hora", hora);
 			model.addAttribute("numEntradasAdult", numEntradasAdult);
 			model.addAttribute("numEntradasMen", numEntradasMen);
-			model.addAttribute("errorCampos", true);
 
 			return "Views/step2";
 		}
