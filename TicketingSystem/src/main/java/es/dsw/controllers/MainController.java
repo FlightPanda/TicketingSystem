@@ -1,10 +1,11 @@
 package es.dsw.controllers;
 
+import java.sql.ResultSet;
+import java.sql.SQLException;
 import java.time.DayOfWeek;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import org.springframework.stereotype.Controller;
@@ -12,6 +13,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import es.dsw.connections.MySqlConnection;
 import es.dsw.models.Sala;
 import es.dsw.models.UsuarioReserva;
 import jakarta.servlet.http.HttpSession;
@@ -22,8 +24,8 @@ public class MainController {
 
 	@GetMapping(value = { "/", "/index" })
 	public String index(Model model, HttpSession session) {
-        session.invalidate(); // Limpia la sesión al acceder a index
-        
+		session.invalidate(); // Limpia la sesión al acceder a index
+
 		LocalDateTime now = LocalDateTime.now();
 
 		DateTimeFormatter timeFormatter = DateTimeFormatter.ofPattern("HH'h' mm'm'");
@@ -71,26 +73,32 @@ public class MainController {
 
 	@GetMapping("/step1")
 	public String step1(Model model, HttpSession session) {
+		MySqlConnection dbConnection = new MySqlConnection();
+		dbConnection.open();
+
 		LocalDateTime now = LocalDateTime.now();
 		DayOfWeek dayOfWeek = now.getDayOfWeek();
 
-		int numeroSalas = (dayOfWeek == DayOfWeek.MONDAY || dayOfWeek == DayOfWeek.WEDNESDAY
-				|| dayOfWeek == DayOfWeek.SUNDAY) ? 4 : 7;
-
-		double precioEntrada = (dayOfWeek == DayOfWeek.WEDNESDAY) ? 3.5 : 6.0;
-
-		List<String> peliculasDisponibles = new ArrayList<>();
-		for (int i = 1; i <= 14; i++) {
-			peliculasDisponibles.add("film" + i); // Nombre de las películas
-		}
-
-		Collections.shuffle(peliculasDisponibles);
-		List<String> peliculasMostradas = peliculasDisponibles.subList(0, numeroSalas);
-
 		List<Sala> salas = new ArrayList<>();
-		for (int i = 1; i <= numeroSalas; i++) {
-			Sala sala = new Sala(i, peliculasMostradas.get(i - 1), precioEntrada);
-			salas.add(sala);
+
+		String query = "SELECT NUMBERROOM_RCF AS NUMSALA, IDFILM_SSF AS IDPELICULA, IDSESSION_SSF AS IDSESION "
+				+ "FROM DB_FILMCINEMA.SESSION_FILM, DB_FILMCINEMA.ROOMCINEMA_FILM "
+				+ "WHERE S_ACTIVEROW_SSF = 1 AND IDROOMCINEMA_RCF = IDROOMCINEMA_SSF "
+				+ "AND S_ACTIVEROW_RCF = 1 ORDER BY NUMBERROOM_RCF ASC";
+
+		ResultSet resultSet = dbConnection.executeSelect(query);
+		try {
+			while (resultSet.next()) {
+				int numeroSala = resultSet.getInt("NUMSALA");
+				int pelicula = resultSet.getInt("IDPELICULA");
+				double precioEntrada = (LocalDateTime.now().getDayOfWeek() == DayOfWeek.WEDNESDAY) ? 3.5 : 6.0;
+				Sala sala = new Sala(numeroSala, pelicula, precioEntrada);
+				salas.add(sala);
+			}
+		} catch (SQLException e) {
+			e.printStackTrace();
+		} finally {
+			dbConnection.close();
 		}
 
 		model.addAttribute("salas", salas);
@@ -148,16 +156,16 @@ public class MainController {
 			model.addAttribute("errorFecha", true);
 			hasError = true;
 		}
-		
-	    if (hora == null || hora.isEmpty()) {
-	        model.addAttribute("errorHora", true);
-	        hasError = true;
-	    }
-	    
-	    if (numEntradasAdult < 1) { 
-	        model.addAttribute("errorNumEntradasAdult", true);
-	        hasError = true;
-	    }
+
+		if (hora == null || hora.isEmpty()) {
+			model.addAttribute("errorHora", true);
+			hasError = true;
+		}
+
+		if (numEntradasAdult < 1) {
+			model.addAttribute("errorNumEntradasAdult", true);
+			hasError = true;
+		}
 
 		if (hasError) {
 			model.addAttribute("filmSeleccionado", session.getAttribute("filmSeleccionado"));

@@ -17,7 +17,7 @@
 			        <!-- Enlace a la película -->
 					<a id="pelicula" class="pelicula" th:href="@{/step2(film=${sala.pelicula})}">
 			            <!-- Imagen de la película dentro del enlace -->
-						<img th:src="@{'/img/films/billboard/' + ${sala.pelicula} + '.jpg'}" alt="Póster de película">
+						<img th:src="@{'/img/films/billboard/film' + ${sala.pelicula} + '.jpg'}" alt="Póster de película">
 			        </a>
 			        <!-- Información de la sala y el precio -->
 			        <div class="info">

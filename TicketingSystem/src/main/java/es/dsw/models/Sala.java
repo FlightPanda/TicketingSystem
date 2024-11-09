@@ -2,14 +2,13 @@ package es.dsw.models;
 
 public class Sala {
 	private int numeroSala;
-	private String pelicula; 
+	private int pelicula; 
 	private double precioEntrada;
 	
-	public Sala(int numeroSala, String pelicula, double precioEntrada) {
+	public Sala(int numeroSala, int pelicula, double precioEntrada) {
 		this.numeroSala = numeroSala; 
 		this.pelicula = pelicula;
-		this.precioEntrada = precioEntrada;
-	}
+		this.precioEntrada = precioEntrada;	}
 
 	public int getNumeroSala() {
 		return numeroSala;
@@ -19,11 +18,11 @@ public class Sala {
 		this.numeroSala = numeroSala;
 	}
 
-	public String getPelicula() {
+	public int getPelicula() {
 		return pelicula;
 	}
 
-	public void setPelicula(String pelicula) {
+	public void setPelicula(int pelicula) {
 		this.pelicula = pelicula;
 	}
 

@@ -52,11 +52,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 			<exclusions>
-       			<exclusion>
-            		<groupId>org.mockito</groupId>
-            		<artifactId>mockito-core</artifactId>
-        		</exclusion>
-    		</exclusions>
+				<exclusion>
+					<groupId>org.mockito</groupId>
+					<artifactId>mockito-core</artifactId>
+				</exclusion>
+			</exclusions>
 		</dependency>
 		<!--
 		https://mvnrepository.com/artifact/org.apache.tomcat.embed/tomcat-embed-jasper -->
@@ -64,6 +64,13 @@
 			<groupId>org.apache.tomcat.embed</groupId>
 			<artifactId>tomcat-embed-jasper</artifactId>
 		</dependency>
+		<!-- https://mvnrepository.com/artifact/mysql/mysql-connector-java -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>8.0.33</version>
+		</dependency>
+
 
 	</dependencies>
 
@@ -76,5 +83,5 @@
 		</plugins>
 		<finalName>TicketingSystem</finalName>
 	</build>
-<!-- testing commits -->
+	<!-- testing commits -->
 </project>
