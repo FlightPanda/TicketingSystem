@@ -9,7 +9,13 @@
 	<link rel="stylesheet" th:href="@{/styles/estilos.css}">
 	<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
 	<script th:src="@{/js/step3.js}"></script>
-	<script> let MaxNumButacasToSelect = 3; let NumButacasSelected = 0;</script>
+	<input type="hidden" id="totalButacas" th:value="${totalButacas}" />
+	<input type="hidden" id="butacasSeleccionadasCount" th:value="${butacasSeleccionadasCount}" />
+
+	<script>
+		let MaxNumButacasToSelect = document.getElementById("totalButacas").value;
+		let NumButacasSelected = document.getElementById("butacasSeleccionadasCount").value;
+	</script>
 </head>
 
 <body>

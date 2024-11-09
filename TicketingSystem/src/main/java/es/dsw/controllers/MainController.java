@@ -180,6 +180,10 @@ public class MainController {
 
 			return "Views/step2";
 		}
+		int totalButacas = numEntradasAdult + numEntradasMen;
+        session.setAttribute("totalButacas", totalButacas);
+        model.addAttribute("totalButacas", totalButacas);
+
 
 		UsuarioReserva usuarioReserva = new UsuarioReserva();
 		usuarioReserva.setNombre(nombre);
@@ -196,9 +200,37 @@ public class MainController {
 
 		return "Views/step3";
 	}
+	
+	@GetMapping("/step3")
+	public String step3(Model model, HttpSession session) {
+	    Integer totalButacas = (Integer) session.getAttribute("totalButacas");
+	    model.addAttribute("totalButacas", totalButacas != null ? totalButacas : 0);
 
-	@GetMapping("/step4")
-	public String step4() {
+	    String butacasSeleccionadasStr = (String) session.getAttribute("butacasSeleccionadas");
+	    int butacasSeleccionadasCount = butacasSeleccionadasStr != null ? butacasSeleccionadasStr.split(",").length : 0;
+	    model.addAttribute("butacasSeleccionadasCount", butacasSeleccionadasCount);
+
+	    return "Views/step3";
+	}
+
+
+	@PostMapping("/step4")
+	public String step4(@RequestParam("FButacasSelected") String butacasSeleccionadas, Model model, HttpSession session) {
+        Integer totalButacas = (Integer) session.getAttribute("totalButacas");
+        
+        String[] butacasArray = butacasSeleccionadas.split(",");
+        int numButacasSeleccionadas = butacasArray.length;
+
+
+        
+        if (totalButacas != null && numButacasSeleccionadas != totalButacas) {
+            model.addAttribute("errorButacas", "Debes seleccionar exactamente " + totalButacas + " butacas.");
+            model.addAttribute("butacasSeleccionadas", butacasSeleccionadas);
+            return "Views/step3"; 
+        }
+        session.setAttribute("butacasSeleccionadas", butacasSeleccionadas); 
+        model.addAttribute("butacasSeleccionadas", butacasSeleccionadas); 
+
 		return "Views/step4";
 	}
 
