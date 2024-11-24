@@ -17,21 +17,21 @@
             <form class="Fdatabuy" name="Fdatabuy" method="POST" action="./end.html">
               <div class="CabResumenFac"><p>Datos de facturación</p></div>
               <div class="CuerResumen">
-                <p><span>Nombre:</span> Daniel</p>
-                <p><span>Apellidos:</span> Pérez Pérez</p>
-                <p><span>E-mail:</span> danielperezperez@ieselrincon.es</p>
+                <p><span>Nombre:</span><span th:text="${usuarioReserva.nombre}"></span></p>
+                <p><span>Apellidos:</span><span th:text="${usuarioReserva.apellidos}"></span></p>
+                <p><span>E-mail:</span><span th:text="${usuarioReserva.email}"></span></p>
               </div>
               <div class="CabResumenBuy"><p>Resumen de la reserva</p></div>
               <div class="CuerResumen">
-                    <p><span>Película:</span> LightYear</p>
-                    <p><span>Sala:</span> 3</p>
-                    <p><span>Fecha:</span> 15/10/2022</p>
-                    <p><span>Sesión:</span> +20:00h</p>
-                    <p><span>Adultos:</span> 2 x 6.5€</p>
-                    <p><span>&lt; 12 años:</span> 1 x 4.5€</p>
-                    <p><span>Butacas:</span> F5B2, F5B3, F5B4</p>
+                    <p><span>Película:</span><span th:text="${filmSeleccionado}"></span></p>
+                    <p><span>Sala:</span><span th:text="${salaSeleccionada}"></span></p>
+                    <p><span>Fecha:</span><span th:text="${usuarioReserva.fecha}"></span></p>
+                    <p><span>Sesión:</span><span th:text="${usuarioReserva.hora}"></span></p>
+                    <p><span>Adultos:</span> <span th:text="${usuarioReserva.numEntradasAdult}"></span> x <span th:text="${precioEntrada}"></span>€</p>
+                    <p><span>&lt; 12 años:</span> <span th:text="${usuarioReserva.numEntradasMen}"></span> x <span th:text="${precioEntradaMenor}"></span>€</p>
+                    <p><span>Butacas:</span><span th:text="${butacasSeleccionadas}"></span></p>
               </div>
-              <div class="CabResumenFac"><p><span>TOTAL: 17.5 €</span></p></div>
+              <div class="CabResumenFac"><p><span>TOTAL:<span th:text="${totalCompra}"></span> €</span></span></p></div>
               <div class="CabResumenTar"><p>Confirmación de compra</p></div>
               <div class="DatTarjeta">
                 <div><label>Titular:</label><input type="text" name="ftitulartarjeta" value="" required/></div>

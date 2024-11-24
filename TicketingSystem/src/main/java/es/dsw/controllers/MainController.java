@@ -66,7 +66,6 @@ public class MainController {
 		model.addAttribute("hora", hora);
 		model.addAttribute("fecha", fecha);
 		model.addAttribute("mensajeDelDia", mensajeDelDia);
-		model.addAttribute("precioEntrada", precioEntrada);
 
 		return "index";
 	}
@@ -102,14 +101,17 @@ public class MainController {
 		}
 
 		model.addAttribute("salas", salas);
+	    session.setAttribute("salas", salas); 
 		session.removeAttribute("filmSeleccionado");
 
 		return "Views/step1";
 	}
 
 	@GetMapping("/step2")
-	public String getStep2(@RequestParam(value = "film", required = false) String film, HttpSession session,
+	public String getStep2(@RequestParam(value = "film", required = false) String film, 
+			HttpSession session,
 			Model model) {
+		
 		if (film == null && session.getAttribute("filmSeleccionado") == null) {
 			return "redirect:/step1";
 		}
@@ -119,6 +121,7 @@ public class MainController {
 		}
 
 		model.addAttribute("filmSeleccionado", session.getAttribute("filmSeleccionado"));
+	    model.addAttribute("salaSeleccionada", session.getAttribute("salaSeleccionada"));
 		model.addAttribute("nombre", session.getAttribute("nombre"));
 		model.addAttribute("apellidos", session.getAttribute("apellidos"));
 		model.addAttribute("email", session.getAttribute("email"));
@@ -181,9 +184,8 @@ public class MainController {
 			return "Views/step2";
 		}
 		int totalButacas = numEntradasAdult + numEntradasMen;
-        session.setAttribute("totalButacas", totalButacas);
-        model.addAttribute("totalButacas", totalButacas);
-
+		session.setAttribute("totalButacas", totalButacas);
+		model.addAttribute("totalButacas", totalButacas);
 
 		UsuarioReserva usuarioReserva = new UsuarioReserva();
 		usuarioReserva.setNombre(nombre);
@@ -200,64 +202,74 @@ public class MainController {
 
 		return "Views/step3";
 	}
-	
+
 	@GetMapping("/step3")
 	public String step3(Model model, HttpSession session) {
-	    UsuarioReserva usuarioReserva = (UsuarioReserva) session.getAttribute("usuarioReserva");
+		UsuarioReserva usuarioReserva = (UsuarioReserva) session.getAttribute("usuarioReserva");
+		
+		if (usuarioReserva != null) {
+			model.addAttribute("nombre", usuarioReserva.getNombre());
+			model.addAttribute("apellidos", usuarioReserva.getApellidos());
+			model.addAttribute("email", usuarioReserva.getEmail());
+			model.addAttribute("fecha", usuarioReserva.getFecha());
+			model.addAttribute("hora", usuarioReserva.getHora());
+			model.addAttribute("numEntradasAdult", usuarioReserva.getNumEntradasAdult());
+			model.addAttribute("numEntradasMen", usuarioReserva.getNumEntradasMen());
+		}
+		Integer totalButacas = (Integer) session.getAttribute("totalButacas");
+		model.addAttribute("totalButacas", totalButacas != null ? totalButacas : 0);
 
-	    if (usuarioReserva != null) {
-	        model.addAttribute("nombre", usuarioReserva.getNombre());
-	        model.addAttribute("apellidos", usuarioReserva.getApellidos());
-	        model.addAttribute("email", usuarioReserva.getEmail());
-	        model.addAttribute("fecha", usuarioReserva.getFecha());
-	        model.addAttribute("hora", usuarioReserva.getHora());
-	        model.addAttribute("numEntradasAdult", usuarioReserva.getNumEntradasAdult());
-	        model.addAttribute("numEntradasMen", usuarioReserva.getNumEntradasMen());
-	    }
-	    Integer totalButacas = (Integer) session.getAttribute("totalButacas");
-	    model.addAttribute("totalButacas", totalButacas != null ? totalButacas : 0);
+		String butacasSeleccionadasStr = (String) session.getAttribute("butacasSeleccionadas");
+		int butacasSeleccionadasCount = butacasSeleccionadasStr != null ? butacasSeleccionadasStr.split(",").length : 0;
+		model.addAttribute("butacasSeleccionadasCount", butacasSeleccionadasCount);
 
-	    String butacasSeleccionadasStr = (String) session.getAttribute("butacasSeleccionadas");
-	    int butacasSeleccionadasCount = butacasSeleccionadasStr != null ? butacasSeleccionadasStr.split(",").length : 0;
-	    model.addAttribute("butacasSeleccionadasCount", butacasSeleccionadasCount);
-
-	    return "Views/step3";
+		return "Views/step3";
 	}
-
 	@GetMapping("/step4")
 	public String step4(Model model, HttpSession session) {
-	    UsuarioReserva usuarioReserva = (UsuarioReserva) session.getAttribute("usuarioReserva");
+		UsuarioReserva usuarioReserva = (UsuarioReserva) session.getAttribute("usuarioReserva");
 
-	    if (usuarioReserva != null) {
-	        model.addAttribute("nombre", usuarioReserva.getNombre());
-	        model.addAttribute("apellidos", usuarioReserva.getApellidos());
-	        model.addAttribute("email", usuarioReserva.getEmail());
-	        model.addAttribute("fecha", usuarioReserva.getFecha());
-	        model.addAttribute("hora", usuarioReserva.getHora());
-	        model.addAttribute("numEntradasAdult", usuarioReserva.getNumEntradasAdult());
-	        model.addAttribute("numEntradasMen", usuarioReserva.getNumEntradasMen());
-	    }
+		if (usuarioReserva == null) {
+			return "redirect:/step3";
+		}
+		
 
-	    return "Views/step4";
+		model.addAttribute("usuarioReserva", usuarioReserva);
+		model.addAttribute("nombre", usuarioReserva.getNombre());
+		model.addAttribute("apellidos", usuarioReserva.getApellidos());
+		model.addAttribute("email", usuarioReserva.getEmail());
+		model.addAttribute("fecha", usuarioReserva.getFecha());
+		model.addAttribute("hora", usuarioReserva.getHora());
+		model.addAttribute("numEntradasAdult", usuarioReserva.getNumEntradasAdult());
+		model.addAttribute("numEntradasMen", usuarioReserva.getNumEntradasMen());
+
+		return "Views/step4";
+		
 	}
 
 	@PostMapping("/step4")
-	public String step4(@RequestParam("FButacasSelected") String butacasSeleccionadas, Model model, HttpSession session) {
-        Integer totalButacas = (Integer) session.getAttribute("totalButacas");
-        
-        String[] butacasArray = butacasSeleccionadas.split(",");
-        int numButacasSeleccionadas = butacasArray.length;
+	public String step4(@RequestParam("FButacasSelected") String butacasSeleccionadas, Model model,
+			HttpSession session) {
+		UsuarioReserva usuarioReserva = (UsuarioReserva) session.getAttribute("usuarioReserva");
 
+		if (usuarioReserva == null) {
+			return "redirect:/step3";
+		}
 
-        
-        if (totalButacas != null && numButacasSeleccionadas != totalButacas) {
-            model.addAttribute("errorButacas", "Debes seleccionar exactamente " + totalButacas + " butacas.");
-            model.addAttribute("butacasSeleccionadas", butacasSeleccionadas);
-            return "Views/step3"; 
-        }
-        session.setAttribute("butacasSeleccionadas", butacasSeleccionadas); 
-        model.addAttribute("butacasSeleccionadas", butacasSeleccionadas); 
+		Integer totalButacas = (Integer) session.getAttribute("totalButacas");
 
+		String[] butacasArray = butacasSeleccionadas.split(",");
+		int numButacasSeleccionadas = butacasArray.length;
+
+		if (totalButacas != null && numButacasSeleccionadas != totalButacas) {
+			model.addAttribute("errorButacas", "Debes seleccionar exactamente " + totalButacas + " butacas.");
+			model.addAttribute("butacasSeleccionadas", butacasSeleccionadas);
+			return "Views/step3";
+		}
+		session.setAttribute("butacasSeleccionadas", butacasSeleccionadas);
+		model.addAttribute("butacasSeleccionadas", butacasSeleccionadas);
+		model.addAttribute("filmSeleccionado", session.getAttribute("filmSeleccionado"));
+		model.addAttribute("usuarioReserva", usuarioReserva);
 
 		return "Views/step4";
 	}
@@ -266,4 +278,5 @@ public class MainController {
 	public String end() {
 		return "Views/end";
 	}
+	
 }
