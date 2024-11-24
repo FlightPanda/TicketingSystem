@@ -203,6 +203,17 @@ public class MainController {
 	
 	@GetMapping("/step3")
 	public String step3(Model model, HttpSession session) {
+	    UsuarioReserva usuarioReserva = (UsuarioReserva) session.getAttribute("usuarioReserva");
+
+	    if (usuarioReserva != null) {
+	        model.addAttribute("nombre", usuarioReserva.getNombre());
+	        model.addAttribute("apellidos", usuarioReserva.getApellidos());
+	        model.addAttribute("email", usuarioReserva.getEmail());
+	        model.addAttribute("fecha", usuarioReserva.getFecha());
+	        model.addAttribute("hora", usuarioReserva.getHora());
+	        model.addAttribute("numEntradasAdult", usuarioReserva.getNumEntradasAdult());
+	        model.addAttribute("numEntradasMen", usuarioReserva.getNumEntradasMen());
+	    }
 	    Integer totalButacas = (Integer) session.getAttribute("totalButacas");
 	    model.addAttribute("totalButacas", totalButacas != null ? totalButacas : 0);
 
@@ -213,6 +224,22 @@ public class MainController {
 	    return "Views/step3";
 	}
 
+	@GetMapping("/step4")
+	public String step4(Model model, HttpSession session) {
+	    UsuarioReserva usuarioReserva = (UsuarioReserva) session.getAttribute("usuarioReserva");
+
+	    if (usuarioReserva != null) {
+	        model.addAttribute("nombre", usuarioReserva.getNombre());
+	        model.addAttribute("apellidos", usuarioReserva.getApellidos());
+	        model.addAttribute("email", usuarioReserva.getEmail());
+	        model.addAttribute("fecha", usuarioReserva.getFecha());
+	        model.addAttribute("hora", usuarioReserva.getHora());
+	        model.addAttribute("numEntradasAdult", usuarioReserva.getNumEntradasAdult());
+	        model.addAttribute("numEntradasMen", usuarioReserva.getNumEntradasMen());
+	    }
+
+	    return "Views/step4";
+	}
 
 	@PostMapping("/step4")
 	public String step4(@RequestParam("FButacasSelected") String butacasSeleccionadas, Model model, HttpSession session) {
@@ -230,6 +257,7 @@ public class MainController {
         }
         session.setAttribute("butacasSeleccionadas", butacasSeleccionadas); 
         model.addAttribute("butacasSeleccionadas", butacasSeleccionadas); 
+
 
 		return "Views/step4";
 	}
