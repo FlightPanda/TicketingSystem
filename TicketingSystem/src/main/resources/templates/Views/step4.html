@@ -14,7 +14,7 @@
         <div class="subcabecera"><div class="CuentaAtrasUno"></div><p>&nbsp;Revise y confirme la compra</p></div>
         <div class="cuerpo">
            
-            <form class="Fdatabuy" name="Fdatabuy" method="POST" action="./end.html">
+			<form class="Fdatabuy" name="Fdatabuy" method="POST" th:action="@{/end}">
               <div class="CabResumenFac"><p>Datos de facturación</p></div>
               <div class="CuerResumen">
                 <p><span>Nombre:</span><span th:text="${usuarioReserva.nombre}"></span></p>
@@ -24,21 +24,21 @@
               <div class="CabResumenBuy"><p>Resumen de la reserva</p></div>
               <div class="CuerResumen">
                     <p><span>Película:</span><span th:text="${filmSeleccionado}"></span></p>
-                    <p><span>Sala:</span><span th:text="${salaSeleccionada}"></span></p>
+                    <p><span>Sala:</span><span th:text="${salaSeleccionada.numeroSala}"></span></p>
                     <p><span>Fecha:</span><span th:text="${usuarioReserva.fecha}"></span></p>
                     <p><span>Sesión:</span><span th:text="${usuarioReserva.hora}"></span></p>
-                    <p><span>Adultos:</span> <span th:text="${usuarioReserva.numEntradasAdult}"></span> x <span th:text="${precioEntrada}"></span>€</p>
+                    <p><span>Adultos:</span> <span th:text="${usuarioReserva.numEntradasAdult}"></span> x <span th:text="${salaSeleccionada.precioEntrada}"></span>€</p>
                     <p><span>&lt; 12 años:</span> <span th:text="${usuarioReserva.numEntradasMen}"></span> x <span th:text="${precioEntradaMenor}"></span>€</p>
                     <p><span>Butacas:</span><span th:text="${butacasSeleccionadas}"></span></p>
               </div>
               <div class="CabResumenFac"><p><span>TOTAL:<span th:text="${totalCompra}"></span> €</span></span></p></div>
               <div class="CabResumenTar"><p>Confirmación de compra</p></div>
               <div class="DatTarjeta">
-                <div><label>Titular:</label><input type="text" name="ftitulartarjeta" value="" required/></div>
-                <div><label>Nº Tarjeta:</label><input type="number" name="fnumtarjeta" min="1000000000000000" max="9999999999999999" value="" step="1" required/></div>
+                <div><label>Titular:</label><input type="text" name="ftitulartarjeta" th:value="${titularTarjeta}" required/></div>
+                <div><label>Nº Tarjeta:</label><input type="number" name="fnumtarjeta" min="1000000000000000" max="9999999999999999" th:value="${numeroTarjeta}" step="1" required/></div>
                 <div>
                   <label>Mes:</label>
-                  <select name="fMesCaduca">
+                  <select name="fMesCaduca" th:value="${mesCaduca}" required>
                     <option>01</option>
                     <option>02</option>
                     <option>03</option>
@@ -53,7 +53,7 @@
                     <option>12</option>
                   </select>
                   <label>Año:</label>
-                  <select name="fAnioCaduca">
+                  <select name="fAnioCaduca" th:value="${anioCaduca}" required>
                     <option>22</option>
                     <option>23</option>
                     <option>24</option>
@@ -75,9 +75,10 @@
                     <option>40</option>
                   </select>               
                 </div>
-                <div><label>CCS:</label><input type="number" name="fccstarjeta" min="0" max="999" value="" step="1" required/></div>
+                <div><label>CCS:</label><input type="number" name="fccstarjeta" min="0" max="999" th:value="${codigoSeguridad}" step="1" required/></div>
               </div>
               <div class="DatTarjeta">
+				<input id="txtButacas" type="hidden" name="FButacasSelected" th:value="${butacasSeleccionadas}" />
                 <a class="atrasbtn" href="javascript:history.back();">&lt;&lt; Atras</a><a class="homebtn" th:href="@{/index.html}">&nbsp;</a><input type="submit" value="Confirmar" />
               </div>
             </form>

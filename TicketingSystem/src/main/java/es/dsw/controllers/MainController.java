@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import es.dsw.connections.MySqlConnection;
+import es.dsw.models.Entrada;
 import es.dsw.models.Sala;
 import es.dsw.models.UsuarioReserva;
 import jakarta.servlet.http.HttpSession;
@@ -21,7 +22,7 @@ import org.springframework.ui.Model;
 
 @Controller
 public class MainController {
-
+	
 	@GetMapping(value = { "/", "/index" })
 	public String index(Model model, HttpSession session) {
 		session.invalidate(); // Limpia la sesión al acceder a index
@@ -66,6 +67,7 @@ public class MainController {
 		model.addAttribute("hora", hora);
 		model.addAttribute("fecha", fecha);
 		model.addAttribute("mensajeDelDia", mensajeDelDia);
+		model.addAttribute("precioEntrada", precioEntrada);
 
 		return "index";
 	}
@@ -93,6 +95,7 @@ public class MainController {
 				double precioEntrada = (LocalDateTime.now().getDayOfWeek() == DayOfWeek.WEDNESDAY) ? 3.5 : 6.0;
 				Sala sala = new Sala(numeroSala, pelicula, precioEntrada);
 				salas.add(sala);
+
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
@@ -103,6 +106,7 @@ public class MainController {
 		model.addAttribute("salas", salas);
 	    session.setAttribute("salas", salas); 
 		session.removeAttribute("filmSeleccionado");
+	    session.removeAttribute("salaSeleccionada");
 
 		return "Views/step1";
 	}
@@ -119,9 +123,19 @@ public class MainController {
 		if (film != null) {
 			session.setAttribute("filmSeleccionado", film);
 		}
-
+		
+		List<Sala> salas = (List<Sala>) session.getAttribute("salas");
+	    if (salas != null) {
+	        // Busca la sala correspondiente a la película seleccionada
+	        Sala salaSeleccionada = salas.stream()
+	                                     .filter(s -> Integer.toString(s.getPelicula()).equals(film))
+	                                     .findFirst()
+	                                     .orElse(null);
+	        session.setAttribute("salaSeleccionada", salaSeleccionada); // Guarda la sala en la sesión
+	        model.addAttribute("salaSeleccionada", salaSeleccionada); // Añade al modelo
+	    }
+	    
 		model.addAttribute("filmSeleccionado", session.getAttribute("filmSeleccionado"));
-	    model.addAttribute("salaSeleccionada", session.getAttribute("salaSeleccionada"));
 		model.addAttribute("nombre", session.getAttribute("nombre"));
 		model.addAttribute("apellidos", session.getAttribute("apellidos"));
 		model.addAttribute("email", session.getAttribute("email"));
@@ -130,7 +144,6 @@ public class MainController {
 		model.addAttribute("hora", session.getAttribute("hora"));
 		model.addAttribute("numEntradasAdult", session.getAttribute("numEntradasAdult"));
 		model.addAttribute("numEntradasMen", session.getAttribute("numEntradasMen"));
-
 		return "Views/step2";
 	}
 
@@ -220,6 +233,8 @@ public class MainController {
 		model.addAttribute("totalButacas", totalButacas != null ? totalButacas : 0);
 
 		String butacasSeleccionadasStr = (String) session.getAttribute("butacasSeleccionadas");
+	    model.addAttribute("butacasSeleccionadas", butacasSeleccionadasStr != null ? butacasSeleccionadasStr : "");
+
 		int butacasSeleccionadasCount = butacasSeleccionadasStr != null ? butacasSeleccionadasStr.split(",").length : 0;
 		model.addAttribute("butacasSeleccionadasCount", butacasSeleccionadasCount);
 
@@ -228,29 +243,33 @@ public class MainController {
 	@GetMapping("/step4")
 	public String step4(Model model, HttpSession session) {
 		UsuarioReserva usuarioReserva = (UsuarioReserva) session.getAttribute("usuarioReserva");
+	    Sala salaSeleccionada = (Sala) session.getAttribute("salaSeleccionada");
+
 
 		if (usuarioReserva == null) {
 			return "redirect:/step3";
 		}
 		
+	    double precioEntradaMenor = 3.5;
+	    double totalCompra = (usuarioReserva.getNumEntradasAdult() * salaSeleccionada.getPrecioEntrada()) +
+                (usuarioReserva.getNumEntradasMen() * precioEntradaMenor);
 
+		
 		model.addAttribute("usuarioReserva", usuarioReserva);
-		model.addAttribute("nombre", usuarioReserva.getNombre());
-		model.addAttribute("apellidos", usuarioReserva.getApellidos());
-		model.addAttribute("email", usuarioReserva.getEmail());
-		model.addAttribute("fecha", usuarioReserva.getFecha());
-		model.addAttribute("hora", usuarioReserva.getHora());
-		model.addAttribute("numEntradasAdult", usuarioReserva.getNumEntradasAdult());
-		model.addAttribute("numEntradasMen", usuarioReserva.getNumEntradasMen());
+	    model.addAttribute("salaSeleccionada", salaSeleccionada);
+	    model.addAttribute("precioEntradaMenor", precioEntradaMenor);
+	    model.addAttribute("totalCompra", totalCompra);
 
 		return "Views/step4";
 		
 	}
 
 	@PostMapping("/step4")
-	public String step4(@RequestParam("FButacasSelected") String butacasSeleccionadas, Model model,
+	public String step4(@RequestParam("FButacasSelected") String butacasSeleccionadas,  
+			Model model,
 			HttpSession session) {
 		UsuarioReserva usuarioReserva = (UsuarioReserva) session.getAttribute("usuarioReserva");
+	    Sala salaSeleccionada = (Sala) session.getAttribute("salaSeleccionada");
 
 		if (usuarioReserva == null) {
 			return "redirect:/step3";
@@ -260,23 +279,66 @@ public class MainController {
 
 		String[] butacasArray = butacasSeleccionadas.split(",");
 		int numButacasSeleccionadas = butacasArray.length;
+		
+	    double precioEntradaMenor = 3.5;
+	    double totalCompra = (usuarioReserva.getNumEntradasAdult() * salaSeleccionada.getPrecioEntrada()) +
+                (usuarioReserva.getNumEntradasMen() * precioEntradaMenor);
 
-		if (totalButacas != null && numButacasSeleccionadas != totalButacas) {
-			model.addAttribute("errorButacas", "Debes seleccionar exactamente " + totalButacas + " butacas.");
-			model.addAttribute("butacasSeleccionadas", butacasSeleccionadas);
-			return "Views/step3";
-		}
+	
 		session.setAttribute("butacasSeleccionadas", butacasSeleccionadas);
 		model.addAttribute("butacasSeleccionadas", butacasSeleccionadas);
 		model.addAttribute("filmSeleccionado", session.getAttribute("filmSeleccionado"));
 		model.addAttribute("usuarioReserva", usuarioReserva);
+	    model.addAttribute("salaSeleccionada", salaSeleccionada); 
+	    model.addAttribute("totalCompra", totalCompra);
+
 
 		return "Views/step4";
 	}
 
 	@GetMapping("/end")
-	public String end() {
+	public String end(Model model, HttpSession session) {
+		UsuarioReserva usuarioReserva = (UsuarioReserva) session.getAttribute("usuarioReserva");
+	    Sala salaSeleccionada = (Sala) session.getAttribute("salaSeleccionada");
+	    String butacasSeleccionadasStr = (String) session.getAttribute("butacasSeleccionadas");
+
+	    List<Entrada> entradas = new ArrayList<>();
+
+	    // Generar entradas a partir de las butacas seleccionadas
+	    String[] butacas = butacasSeleccionadasStr.split(",");
+	    for (int i = 0; i < butacas.length; i++) {
+	        int fila = Integer.parseInt(butacas[i].split("-")[0]); // Ejemplo: Fila de la butaca
+	        int butaca = Integer.parseInt(butacas[i].split("-")[1]); // Ejemplo: Número de butaca
+	        String codigo = generarCodigoEntrada(i + 1); // Método para generar un código único para cada entrada
+	        Entrada entrada = new Entrada(
+	                codigo,
+	                salaSeleccionada.getPelicula() + "", // Nombre de la película (ajusta según tu modelo)
+	                salaSeleccionada.getNumeroSala(),
+	                usuarioReserva.getFecha(),
+	                usuarioReserva.getHora(),
+	                fila,
+	                butaca
+	        );
+	        entradas.add(entrada);
+	    }
+	    model.addAttribute("usuarioReserva", usuarioReserva);
+	    model.addAttribute("entradas", entradas);
+	    
 		return "Views/end";
 	}
+	private String generarCodigoEntrada(int numeroEntrada) {
+	    return "100000" + System.currentTimeMillis() + numeroEntrada;
+	}
+	
+	@PostMapping("/end")
+	public String end(@RequestParam("ftitulartarjeta") String titularTarjeta,
+			@RequestParam("fnumtarjeta") String numeroTarjeta,
+			@RequestParam("fMesCaduca") String mesCaduca,
+			@RequestParam("fAnioCaduca") String anioCaduca,
+			@RequestParam("fccstarjeta") String codigoSeguridad) {
+		return "Views/end";
+	}
+	
+	
 	
 }
