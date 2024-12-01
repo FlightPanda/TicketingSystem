@@ -8,12 +8,14 @@ import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import es.dsw.connections.MySqlConnection;
+import es.dsw.daos.CompraDAO;
 import es.dsw.models.Entrada;
 import es.dsw.models.Sala;
 import es.dsw.models.UsuarioReserva;
@@ -22,6 +24,14 @@ import org.springframework.ui.Model;
 
 @Controller
 public class MainController {
+	
+    private final CompraDAO compraDAO;
+    
+
+	@Autowired
+    public MainController(CompraDAO compraDAO) {
+        this.compraDAO = compraDAO;
+    }
 
 	@GetMapping(value = { "/", "/index" })
 	public String index(Model model, HttpSession session) {
@@ -244,12 +254,12 @@ public class MainController {
 		double totalCompra = (usuarioReserva.getNumEntradasAdult() * salaSeleccionada.getPrecioEntrada())
 				+ (usuarioReserva.getNumEntradasMen() * precioEntradaMenor);
 
+		session.setAttribute("totalCompra", totalCompra);
 		model.addAttribute("usuarioReserva", usuarioReserva);
 		model.addAttribute("salaSeleccionada", salaSeleccionada);
 		model.addAttribute("precioEntradaMenor", precioEntradaMenor);
 		model.addAttribute("totalCompra", totalCompra);
 		model.addAttribute("entradas", entrada);
-
 		return "Views/step4";
 
 	}
@@ -292,7 +302,7 @@ public class MainController {
 
 		if (usuarioReserva == null || salaSeleccionada == null) {
 			System.err.println("Error: Datos del usuario o sala no encontrados en la sesión.");
-			return "redirect:/step4"; 
+			return "redirect:/step4";
 		}
 
 		List<Entrada> entradas = new ArrayList<>();
@@ -343,19 +353,31 @@ public class MainController {
 			return "redirect:/step4";
 		}
 
-		if (entradas == null || entradas.isEmpty()) {
-			System.err.println("Error: No se generaron entradas.");
+		Double totalCompra = (Double) session.getAttribute("totalCompra");
+	    if (totalCompra == null) {
+	        Sala salaSeleccionada = (Sala) session.getAttribute("salaSeleccionada");
+	        if (salaSeleccionada != null) {
+	            double precioEntradaMenor = 3.5;
+	            totalCompra = (usuarioReserva.getNumEntradasAdult() * salaSeleccionada.getPrecioEntrada())
+	                    + (usuarioReserva.getNumEntradasMen() * precioEntradaMenor);
+	            session.setAttribute("totalCompra", totalCompra);
+	        } else {
+	            System.err.println("Error: No se pudo calcular totalCompra.");
+	            return "redirect:/step4";
+	        }
+	    }
+		entradas = generarEntradas(session);
+		boolean compraExitosa = compraDAO.procesarCompra(usuarioReserva, entradas, titularTarjeta, 
+                numeroTarjeta, mesCaduca, anioCaduca, 
+                codigoSeguridad, totalCompra);
 
-			entradas = generarEntradas(session);
-			if (entradas.isEmpty()) {
-				System.err.println("Error: No se pudieron generar entradas.");
-				return "redirect:/step4";
-			}
-			session.setAttribute("entradas", entradas);
-		}
-
+		session.setAttribute("entradas", entradas);
+		session.setAttribute("totalCompra", totalCompra); 
+		model.addAttribute("totalCompra", totalCompra); 
 		model.addAttribute("usuarioReserva", usuarioReserva);
 		model.addAttribute("entradas", entradas);
+		System.out.println("Valor de totalCompra: " + totalCompra);
+
 
 		return "Views/end";
 	}
@@ -369,9 +391,8 @@ public class MainController {
 
 		if (usuarioReserva == null || salaSeleccionada == null || butacasSeleccionadasStr == null) {
 			System.err.println("Error: Datos insuficientes para generar entradas.");
-			return entradas; 
+			return entradas;
 		}
-
 
 		String[] butacas = butacasSeleccionadasStr.split(";");
 		for (String butaca : butacas) {
@@ -413,4 +434,5 @@ public class MainController {
 
 		return "Views/imprimirTicket";
 	}
+
 }

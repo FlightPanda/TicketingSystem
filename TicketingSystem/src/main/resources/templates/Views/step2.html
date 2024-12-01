@@ -57,7 +57,7 @@
 
 				<div class="DatRes">
 					<div><label>Fecha:</label>
-						<input type="date" name="fdate" min="2024-11-01" max="2024-12-01" th:value="${fecha}" th:classappend="${errorFecha} ? ' input-error' : ''" />
+						<input type="date" name="fdate" min="2024-12-01" max="2025-12-31" th:value="${fecha}" th:classappend="${errorFecha} ? ' input-error' : ''" />
 						</div>
 					<div><label>Hora:</label><input type="time" name="fhour" list="popularHours" value="17:00"
 							min="17:00" max="23:00" step="10800" th:value="${hora ?: '17:00'}" />
