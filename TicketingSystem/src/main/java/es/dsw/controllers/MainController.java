@@ -376,8 +376,6 @@ public class MainController {
 		model.addAttribute("totalCompra", totalCompra); 
 		model.addAttribute("usuarioReserva", usuarioReserva);
 		model.addAttribute("entradas", entradas);
-		System.out.println("Valor de totalCompra: " + totalCompra);
-
 
 		return "Views/end";
 	}

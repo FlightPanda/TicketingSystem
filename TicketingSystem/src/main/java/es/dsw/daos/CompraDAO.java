@@ -11,8 +11,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import com.mysql.cj.xdevapi.Statement;
-
 @Repository
 public class CompraDAO {
 

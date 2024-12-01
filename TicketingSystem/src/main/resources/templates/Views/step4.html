@@ -29,7 +29,7 @@
                     <p><span>Sesión:</span><span th:text="${usuarioReserva.hora}"></span></p>
                     <p><span>Adultos:</span> <span th:text="${usuarioReserva.numEntradasAdult}"></span> x <span th:text="${salaSeleccionada.precioEntrada}"></span>€</p>
 					<p><span>&lt; 12 años:</span> <span th:text="${usuarioReserva.numEntradasMen}"></span> x <span th:text="${precioEntradaMenor}"></span>€</p> 
-					<!--No se muestra el importe precioEntradaMenor pero si hace el cálculo en el totalCompra-->
+					<!-- TODO: No se muestra el importe precioEntradaMenor pero si hace el cálculo en el totalCompra-->
                     <p><span>Butacas:</span><span th:text="${butacasSeleccionadas}"></span></p>
               </div>
               <div class="CabResumenFac"><p><span>TOTAL:<span th:text="${totalCompra}"></span> €</span></span></p></div>
