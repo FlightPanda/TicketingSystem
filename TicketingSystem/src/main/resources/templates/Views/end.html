@@ -9,7 +9,6 @@
 	<link rel="stylesheet" th:href="@{/styles/estilos.css}">
 	<script th:src="@{/js/jquery-3.6.0.min.js}"></script>
 	<script th:src="@{/js/step3.js}"></script>
-	<script> let MaxNumButacasToSelect = 3; let NumButacasSelected = 0;</script>
 </head>
 
 <body>
@@ -31,115 +30,63 @@
 			<div></div>
 		</div>
 		<div class="subcabecera">
-			<p>¡¡ Compra realizada con éxtio !!</p>
+			<p>¡¡ Compra realizada con éxito !!</p>
 		</div>
 		<div class="cuerpo">
 			<div class="EntregaEntradas">
-				<p>La compra ha sido realizada con éxito. En breve se enviará un correo electrónico a
-					danielperezperez@ieselrincon.es</p>
-				<p>Si desea imprimir las entradas haga click <a th:href="@{/imrpimirTicket.html}" target="_blank">aquí</a>.
+				<p>La compra ha sido realizada con éxito. En breve se enviará un correo electrónico a: <span th:text="${usuarioReserva.email}">[email]</span></p>
+				<p>Si desea imprimir las entradas haga click <a th:href="@{/imprimirTicket}" target="_blank">aquí</a>.
 					También puede capturar los códigos QR que se muestran a continuación.</p>
 			</div>
 			<div class="EntregaEntradas">
-				<div class="Entrada">
+				<div class="Entrada" th:each="entrada : ${entradas}">
 					<div class="EntradaCab">
 						<img th:src="@{/img/means/entrada.gif}" alt="ticket" />
 						<p class="EntrCodeTitle">Código</p>
-						<p class="EntrCodeVal">1000006372127372</p>
+						<p class="EntrCodeVal" th:text="${entrada.codigo}">[Código de la entrada]</p>
 						<p class="EntrPeliculaTitle">Película</p>
-						<p class="EntrPeliculaVal">LightYear</p>
-						<p class="EntrSala"><span>Sala:</span> 2</p>
-						<p class="EntrFechaVal">Fecha: 15/10/2022</p>
-						<p class="EntrHoraVal">Hora: +20:00h</p>
-						<p class="EntrButacaVal">Fila: 5, Butaca: 2</p>
-					</div><!--
-                 -->
-					<div class="EntradaCuer">
-						<img th:src="@{/img/means/entrada-cue.gif}" alt="ticket" />
-						<p class="EntrPeliculaTitle">Película: <span>LightYear</span></p>
-						<p class="EntrSalaTitle">Sala: <span>2</span></p>
-						<p class="EntrFechaVal">15/10/2022</p>
-						<p class="EntrHoraVal">+20:00h</p>
-						<p class="EntrButacaVal1">Fila: 5</p>
-						<p class="EntrButacaVal2">Butaca: 2</p>
-						<img class="ImagenQR"
-							src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=1000006372127372"
-							alt="QR" />
-
+						<p class="EntrPeliculaVal" th:text="${entrada.pelicula}">[Película]</p>
+						<p class="EntrSala"><span>Sala:</span> <span th:text="${entrada.sala}">[Número de
+								sala]</span></p>
+						<p class="EntrFechaVal"><span>Fecha:</span> <span th:text="${entrada.fecha}">[Fecha]</span></p>
+						<p class="EntrHoraVal"><span>Hora:</span> <span th:text="${entrada.hora}">[Hora]</span></p>
+						<p class="EntrButacaVal"><span>Fila:</span> <span th:text="${entrada.fila}">[Fila]</span>,
+							<span>Butaca:</span> <span th:text="${entrada.butaca}">[Butaca]</span>
+						</p>
 					</div>
-				</div>
-				<div class="Entrada">
-					<div class="EntradaCab">
-						<img th:src="@{/img/means/entrada.gif}" alt="ticket" />
-						<p class="EntrCodeTitle">Código</p>
-						<p class="EntrCodeVal">1000006371112411</p>
-						<p class="EntrPeliculaTitle">Película</p>
-						<p class="EntrPeliculaVal">LightYear</p>
-						<p class="EntrSala"><span>Sala:</span> 2</p>
-						<p class="EntrFechaVal">Fecha: 15/10/2022</p>
-						<p class="EntrHoraVal">Hora: +20:00h</p>
-						<p class="EntrButacaVal">Fila: 5, Butaca: 3</p>
-					</div><!--
-                 -->
 					<div class="EntradaCuer">
 						<img th:src="@{/img/means/entrada-cue.gif}" alt="ticket" />
-						<p class="EntrPeliculaTitle">Película: <span>LightYear</span></p>
-						<p class="EntrSalaTitle">Sala: <span>2</span></p>
-						<p class="EntrFechaVal">15/10/2022</p>
-						<p class="EntrHoraVal">+20:00h</p>
-						<p class="EntrButacaVal1">Fila: 5</p>
-						<p class="EntrButacaVal2">Butaca: 3</p>
+						<p class="EntrPeliculaTitle">Película: <span th:text="${entrada.pelicula}">[Película]</span></p>
+						<p class="EntrSalaTitle">Sala: <span th:text="${entrada.sala}">[Sala]</span></p>
+						<p class="EntrFechaVal"><span>Fecha:</span> <span th:text="${entrada.fecha}">[Fecha]</span></p>
+						<p class="EntrHoraVal"><span>Hora:</span> <span th:text="${entrada.hora}">[Hora]</span></p>
+						<p class="EntrButacaVal1"><span>Fila:</span> <span th:text="${entrada.fila}">[Fila]</span></p>
+						<p class="EntrButacaVal2"><span>Butaca:</span> <span
+								th:text="${entrada.butaca}">[Butaca]</span></p>
 						<img class="ImagenQR"
-							src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=1000006371112411"
+							th:src="|https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=${entrada.codigo}|"
 							alt="QR" />
-
-					</div>
-				</div>
-				<div class="Entrada">
-					<div class="EntradaCab">
-						<img th:src="@{/img/means/entrada.gif}" alt="ticket" />
-						<p class="EntrCodeTitle">Código</p>
-						<p class="EntrCodeVal">10000065523281323</p>
-						<p class="EntrPeliculaTitle">Película</p>
-						<p class="EntrPeliculaVal">LightYear</p>
-						<p class="EntrSala"><span>Sala:</span> 2</p>
-						<p class="EntrFechaVal">Fecha: 15/10/2022</p>
-						<p class="EntrHoraVal">Hora: +20:00h</p>
-						<p class="EntrButacaVal">Fila: 5, Butaca: 4</p>
-					</div><!--
-                 -->
-					<div class="EntradaCuer">
-						<img th:src="@{/img/means/entrada-cue.gif}" alt="ticket" />
-						<p class="EntrPeliculaTitle">Película: <span>LightYear</span></p>
-						<p class="EntrSalaTitle">Sala: <span>2</span></p>
-						<p class="EntrFechaVal">15/10/2022</p>
-						<p class="EntrHoraVal">+20:00h</p>
-						<p class="EntrButacaVal1">Fila: 5</p>
-						<p class="EntrButacaVal2">Butaca: 4</p>
-						<img class="ImagenQR"
-							src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=10000065523281323"
-							alt="QR" />
-
 					</div>
 				</div>
 			</div>
-			<div class="EntregaEntradas">
-				<form>
-					<a class="homebtn" th:href="@{/index}">&nbsp;</a>
-				</form>
-			</div>
 		</div>
-		<div class="pie">
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
-			<div></div>
+		<div class="EntregaEntradas">
+			<form>
+				<a class="homebtn" th:href="@{/index}">&nbsp;</a>
+			</form>
 		</div>
+	</div>
+	<div class="pie">
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+		<div></div>
+	</div>
 	</div>
 </body>
 

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>El rincón del Cine - Imprimir Tickets</title>
+	<link rel="stylesheet" href="/styles/estilos.css">
+</head>
+
+<body style="background: none; background-image : none; color:  black;">
+    <h1>Tickets para Imprimir</h1>
+    <div class="tickets-container" th:each="entrada : ${entradas}">
+        <div class="ticket">
+            <p><span>Código:</span> <span th:text="${entrada.codigo}"></span></p>
+            <p><span>Película:</span> <span th:text="${entrada.pelicula}"></span></p>
+            <p><span>Sala:</span> <span th:text="${entrada.sala}"></span></p>
+            <p><span>Fecha:</span> <span th:text="${entrada.fecha}"></span></p>
+            <p><span>Hora:</span> <span th:text="${entrada.hora}"></span></p>
+            <p><span>Fila:</span> <span th:text="${entrada.fila}"></span></p>
+            <p><span>Butaca:</span> <span th:text="${entrada.butaca}"></span></p>
+            <img class="qr" th:src="'https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=' + ${entrada.codigo}" alt="QR Code">
+        </div>
+    </div>
+    <button class="no-print" onclick="window.print()">Imprimir</button>
+    <a class="no-print" th:href="@{/end}">Volver</a>
+</body>
+
+</html>

@@ -28,7 +28,8 @@
                     <p><span>Fecha:</span><span th:text="${usuarioReserva.fecha}"></span></p>
                     <p><span>Sesión:</span><span th:text="${usuarioReserva.hora}"></span></p>
                     <p><span>Adultos:</span> <span th:text="${usuarioReserva.numEntradasAdult}"></span> x <span th:text="${salaSeleccionada.precioEntrada}"></span>€</p>
-                    <p><span>&lt; 12 años:</span> <span th:text="${usuarioReserva.numEntradasMen}"></span> x <span th:text="${precioEntradaMenor}"></span>€</p>
+					<p><span>&lt; 12 años:</span> <span th:text="${usuarioReserva.numEntradasMen}"></span> x <span th:text="${precioEntradaMenor}"></span>€</p> 
+					<!--No se muestra el importe precioEntradaMenor pero si hace el cálculo en el totalCompra-->
                     <p><span>Butacas:</span><span th:text="${butacasSeleccionadas}"></span></p>
               </div>
               <div class="CabResumenFac"><p><span>TOTAL:<span th:text="${totalCompra}"></span> €</span></span></p></div>
@@ -79,7 +80,7 @@
               </div>
               <div class="DatTarjeta">
 				<input id="txtButacas" type="hidden" name="FButacasSelected" th:value="${butacasSeleccionadas}" />
-                <a class="atrasbtn" href="javascript:history.back();">&lt;&lt; Atras</a><a class="homebtn" th:href="@{/index.html}">&nbsp;</a><input type="submit" value="Confirmar" />
+                <a class="atrasbtn" href="javascript:history.back();">&lt;&lt; Atras</a><a class="homebtn" th:href="@{/index}">&nbsp;</a><input type="submit" value="Confirmar" />
               </div>
             </form>
         </div>

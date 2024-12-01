@@ -2,7 +2,7 @@ package es.dsw.models;
 
 public class Entrada {
 
-    private String codigo;
+	private String codigo;
     private String pelicula;
     private int sala;
     private String fecha;
@@ -11,7 +11,7 @@ public class Entrada {
     private int butaca;
 
     public Entrada(String codigo, String pelicula, int sala, String fecha, String hora, int fila, int butaca) {
-        this.codigo = codigo;
+    	this.codigo = codigo;
         this.pelicula = pelicula;
         this.sala = sala;
         this.fecha = fecha;
